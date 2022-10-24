@@ -11,7 +11,7 @@ public class MainWindowViewModel : ObservableObject
 		HomeViewModel = new HomeViewModel();
 		TextInputViewModel = new TextInputViewModel();
 
-		CurrentView = TextInputViewModel;
+		CurrentView = HomeViewModel;
 
 		HomeViewCommand = new RelayCommand(o => { CurrentView = HomeViewModel; });
 
