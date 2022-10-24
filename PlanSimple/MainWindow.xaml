@@ -3,39 +3,59 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PlanSimple"
+        xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Width="800" Height="600">
+        Title="MainWindow" Width="800" Height="600"
+        Background="#161616">
+    
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"
-                           MinHeight="40"/>
-            <RowDefinition Height="95*"/>
+            <RowDefinition Height="50" />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        
+
         <!-- placeholder for top menu -->
         <Rectangle
             Grid.Row="0"
-            Fill="#050505"/>
-        
+            Fill="#050505" />
+
         <!-- placeholder for main content -->
         <Grid
             Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"
-                                  MinWidth="40"/>
-                <ColumnDefinition Width="95*"/>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-        
+
             <!-- placeholder for in-app navigation menu -->
-            <Rectangle 
+            <StackPanel
                 Grid.Column="0"
-                Fill="#161616"/>
-            
+                Background="#101010">
+                <RadioButton Content="Home"
+                             Height="50"
+                             Foreground="#9FA4A8"
+                             FontSize="22"
+                             IsChecked="True"
+                             Style="{StaticResource MainMenuNavigationButton}"
+                             Command="{Binding HomeViewCommand}"/>
+
+                <RadioButton Content="Text Input"
+                             Height="50"
+                             Foreground="#9FA4A8"
+                             FontSize="22"
+                             Style="{StaticResource MainMenuNavigationButton}"
+                             Command="{Binding TextInputViewCommand}"/>
+
+            </StackPanel>
+
             <!-- placeholder for content defined by currently selected menu -->
-            <Rectangle 
-                Grid.Column="1"
-                Fill="#252525"/>
+            <ContentControl Grid.Column="1"
+                            Margin="10" 
+                            Content="{Binding CurrentView}"/>
         </Grid>
     </Grid>
 </Window>

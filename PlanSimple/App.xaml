@@ -1,9 +1,24 @@
 ﻿<Application x:Class="PlanSimple.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PlanSimple"
+             xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
+             xmlns:view="clr-namespace:PlanSimple.MVVM.View"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+         <ResourceDictionary>
+             <ResourceDictionary.MergedDictionaries>
+                 <ResourceDictionary Source="Theme/MainMenuNavigationButtonTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
+             </ResourceDictionary.MergedDictionaries>
+             
+             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                 <view:HomeView/>
+             </DataTemplate>
+             
+             <DataTemplate DataType="{x:Type viewModel:TextInputViewModel}">
+                 <view:TextInputView/>
+             </DataTemplate>
+             
+         </ResourceDictionary>
     </Application.Resources>
 </Application>
