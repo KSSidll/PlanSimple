@@ -9,20 +9,19 @@ public class MainWindowViewModel : ObservableObject
 	public MainWindowViewModel()
 	{
 		HomeViewModel = new HomeViewModel();
-		TextInputViewModel = new TextInputViewModel();
+		NotesViewModel = new NotesViewModel();
 
 		CurrentView = HomeViewModel;
 
 		HomeViewCommand = new RelayCommand(o => { CurrentView = HomeViewModel; });
-
-		TextInputViewCommand = new RelayCommand(o => { CurrentView = TextInputViewModel; });
+		NotesViewCommand = new RelayCommand(o => { CurrentView = NotesViewModel; });
 	}
 
-	public RelayCommand HomeViewCommand { get; set; }
-	public RelayCommand TextInputViewCommand { get; set; }
+	public RelayCommand HomeViewCommand { get; }
+	public RelayCommand NotesViewCommand { get; }
 
-	public HomeViewModel HomeViewModel { get; set; }
-	public TextInputViewModel TextInputViewModel { get; set; }
+	public HomeViewModel HomeViewModel { get; }
+	public NotesViewModel NotesViewModel { get; }
 
 	public object? CurrentView
 	{

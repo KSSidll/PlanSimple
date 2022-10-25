@@ -15,8 +15,8 @@
                  <view:HomeView/>
              </DataTemplate>
              
-             <DataTemplate DataType="{x:Type viewModel:TextInputViewModel}">
-                 <view:TextInputView/>
+             <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
+                 <view:NotesView/>
              </DataTemplate>
              
          </ResourceDictionary>
