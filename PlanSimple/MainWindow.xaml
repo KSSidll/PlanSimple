@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Width="800" Height="600"
+        Title="Plan Simple" Width="800" Height="600"
         Background="#161616">
     
     <Window.DataContext>
@@ -18,12 +18,12 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <!-- placeholder for top menu -->
+        <!-- top menu -->
         <Rectangle
             Grid.Row="0"
             Fill="#050505" />
 
-        <!-- placeholder for main content -->
+        <!-- main content -->
         <Grid
             Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -31,7 +31,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <!-- placeholder for in-app navigation menu -->
+            <!-- navigation menu -->
             <StackPanel
                 Grid.Column="0"
                 Background="#101010">
@@ -43,16 +43,16 @@
                              Style="{StaticResource MainMenuNavigationButton}"
                              Command="{Binding HomeViewCommand}"/>
 
-                <RadioButton Content="Text Input"
+                <RadioButton Content="Notes"
                              Height="50"
                              Foreground="#9FA4A8"
                              FontSize="22"
                              Style="{StaticResource MainMenuNavigationButton}"
-                             Command="{Binding TextInputViewCommand}"/>
+                             Command="{Binding NotesViewModelCommand}"/>
 
             </StackPanel>
 
-            <!-- placeholder for content defined by currently selected menu -->
+            <!-- currently selected menu content -->
             <ContentControl Grid.Column="1"
                             Margin="10" 
                             Content="{Binding CurrentView}"/>

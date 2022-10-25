@@ -9,7 +9,10 @@
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1"
-                                     Text="{TemplateBinding Text}"
+                                     Text="{Binding Path=Text,
+                                     RelativeSource={RelativeSource TemplatedParent},
+                                     Mode=TwoWay,
+                                     UpdateSourceTrigger=PropertyChanged}"
                                      BorderThickness="0"
                                      Background="Transparent"
                                      Padding="5"
