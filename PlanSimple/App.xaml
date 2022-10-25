@@ -8,15 +8,24 @@
          <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
                  <ResourceDictionary Source="Theme/MainMenuNavigationButtonTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/NoteTextboxTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/NoteDatePickerTheme.xaml"/>
              </ResourceDictionary.MergedDictionaries>
              
              <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                  <view:HomeView/>
              </DataTemplate>
              
-             <DataTemplate DataType="{x:Type viewModel:TextInputViewModel}">
-                 <view:TextInputView/>
+             <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
+                 <view:NotesView/>
+             </DataTemplate>
+             
+             <DataTemplate DataType="{x:Type viewModel:NotesDisplayViewModel}">
+                 <view:NotesDisplayView/>
+             </DataTemplate>
+             
+             <DataTemplate DataType="{x:Type viewModel:NoteEditViewModel}">
+                 <view:NoteEditView/>
              </DataTemplate>
              
          </ResourceDictionary>

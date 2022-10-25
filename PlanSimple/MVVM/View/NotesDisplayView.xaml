@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="PlanSimple.MVVM.View.NotesDisplayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
+             xmlns:view="clr-namespace:PlanSimple.MVVM.View"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <viewModel:NotesDisplayViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid Background="#161616">
+        
+        <ListView ItemsSource="{Binding Notes}" 
+                  Background="#161616"
+                  Foreground="#9FA4A8"
+                  BorderThickness="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Column="0" Text="{Binding NoteId}" Margin="5"/>
+                        <CheckBox Grid.Column="1" IsChecked="{Binding Completed}" Margin="5"
+                                  Command="{Binding DataContext.UpdateNote, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                  CommandParameter="{Binding}" />
+                        <TextBlock Grid.Column="2" Text="{Binding Content}" Margin="5"/>
+                        <TextBlock Grid.Column="3" Text="{Binding ExpireDate}" Margin="5"/>
+                        <Button Grid.Column="4" Content="X"
+                                Command="{Binding DataContext.DeleteNote, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <Button Background="#101010"
+                Foreground="#9FA4A8"
+                Width="60"
+                Height="60"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                BorderThickness="0"
+                Content="Add"
+                Command="{Binding DataContext.NoteEditViewCommand,
+                          RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
+    </Grid>
+</UserControl>
