@@ -2,9 +2,9 @@
 
 namespace PlanSimple.MVVM.View;
 
-public partial class TextInputView : UserControl
+public partial class NotesView : UserControl
 {
-	public TextInputView()
+	public NotesView()
 	{
 		InitializeComponent();
 	}

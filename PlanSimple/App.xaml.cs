@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using PlanSimple.Database.Context;
 
 namespace PlanSimple
 {
@@ -7,5 +9,12 @@ namespace PlanSimple
 	/// </summary>
 	public partial class App : Application
 	{
+		protected override void OnStartup(StartupEventArgs e)
+		{
+			base.OnStartup(e);
+
+			DatabaseFacade noteDatabaseFacade = new DatabaseFacade(new NoteContext());
+			noteDatabaseFacade.EnsureCreated();
+		}
 	}
 }
