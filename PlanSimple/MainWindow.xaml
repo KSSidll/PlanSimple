@@ -49,6 +49,13 @@
                              FontSize="22"
                              Style="{StaticResource MainMenuNavigationButton}"
                              Command="{Binding NotesViewCommand}"/>
+                
+                <RadioButton Content="Calendar"
+                             Height="50"
+                             Foreground="#9FA4A8"
+                             FontSize="22"
+                             Style="{StaticResource MainMenuNavigationButton}"
+                             Command="{Binding CalendarViewCommand}"/>
 
             </StackPanel>
 
