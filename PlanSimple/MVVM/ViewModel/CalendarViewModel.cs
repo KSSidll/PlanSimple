@@ -25,13 +25,13 @@ namespace PlanSimple.MVVM.ViewModel
         {
             Week = new List<WeekDayModel>
             {
-               new WeekDayModel{ DayName="Mon", DayNumber=25 },
-               new WeekDayModel{ DayName="Tues", DayNumber=26 },
-               new WeekDayModel{ DayName="Wed", DayNumber=27 },
-               new WeekDayModel{ DayName="Thurs", DayNumber=28 },
-               new WeekDayModel{ DayName="Fri", DayNumber=29 },
-               new WeekDayModel{ DayName="Sat", DayNumber=30 },
-               new WeekDayModel{ DayName="Sun", DayNumber=1 }
+               new WeekDayModel{ DayName="Mon", DayNumber=31 },
+               new WeekDayModel{ DayName="Tues", DayNumber=1 },
+               new WeekDayModel{ DayName="Wed", DayNumber=2 },
+               new WeekDayModel{ DayName="Thurs", DayNumber=3 },
+               new WeekDayModel{ DayName="Fri", DayNumber=4 },
+               new WeekDayModel{ DayName="Sat", DayNumber=5 },
+               new WeekDayModel{ DayName="Sun", DayNumber=6 }
             };
             ToDoList = new List<ToDoModel>
             {
