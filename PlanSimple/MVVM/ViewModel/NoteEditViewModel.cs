@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PlanSimple.Core;
 using PlanSimple.Database.Context;
 using PlanSimple.Database.Model;
