@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
              mc:Ignorable="d" Background="White" FontSize="18"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="600">
     
     <UserControl.DataContext>
         <viewModel:CalendarViewModel/>
@@ -15,20 +15,21 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions> 
         
         <!-- Week Days Row -->
-        <ListBox Grid.Row="0" ItemsSource="{Binding WeekDays}">
+        <ListBox Grid.Row="0" ItemsSource="{Binding WeekDays}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                    <!--<VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>-->
+                    <UniformGrid Columns="7" />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                        <TextBlock Text="{Binding DayLetter}"/>
-                        <TextBlock Text="{Binding DayNumber}"/>
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock Text="{Binding DayName}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding DayNumber}" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
