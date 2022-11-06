@@ -4,39 +4,87 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
-             mc:Ignorable="d" Background="White" FontSize="18"
+             mc:Ignorable="d" 
+             Background="#161616"
+             Foreground="#9FA4A8"
              d:DesignHeight="450" d:DesignWidth="600">
-    
+
     <UserControl.DataContext>
         <viewModel:CalendarViewModel/>
     </UserControl.DataContext>
-    
+
     <Grid>
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions> 
-        
+        </Grid.RowDefinitions>
+
         <!-- Week Days Row -->
-        <ListBox Grid.Row="0" ItemsSource="{Binding WeekDays}" HorizontalContentAlignment="Stretch">
+        <Grid Grid.Row="0" Background="#FF161616">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Padding="5 0" Background="{x:Null}" Foreground="#FF9FA4A8" >Prev</Button>
+            <ListBox Grid.Column="1" ItemsSource="{Binding Week}" 
+                     HorizontalContentAlignment="Stretch" FontSize="18" Background="{x:Null}" Width="528" Foreground="#FF9FA4A8">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="7" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" >
+                            <TextBlock Text="{Binding DayName}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding DayNumber}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Grid.Column="2" Padding="5 0" Background="{x:Null}" Foreground="#FF9FA4A8">Next</Button>
+        </Grid>
+
+
+        <!-- To Do List -->
+        <ListBox Grid.Row="1" 
+                 ItemsSource="{Binding Days}" 
+                 HorizontalAlignment="Stretch"
+                 FontSize="24" Background="#FF161616" BorderBrush="{x:Null}" Foreground="#FF9FA4A8">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <!--<VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>-->
-                    <UniformGrid Columns="7" />
+                    <StackPanel />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" >
-                        <TextBlock Text="{Binding DayName}" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding DayNumber}" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Vertical" Margin="5 5 0 10">
+                        <TextBlock Text="{Binding DisplayDate}" 
+                                   FontWeight="Bold"
+                                   Margin="0 0 0 5"/>
+                        <ListBox ItemsSource="{Binding ToDoList}" Background="{x:Null}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton VerticalAlignment="Center"
+                                                    Margin="5 0 10 0" Foreground="#FF9FA4A8"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Title}" FontSize="18" 
+                                                       Margin="0 0 0 5" Foreground="#FF9FA4A8"/>
+                                            <TextBlock Text="{Binding Description}" FontSize="14" Foreground="#FF9FA4A8"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <!-- To Do List -->      
-        
-        
     </Grid>
 </UserControl>

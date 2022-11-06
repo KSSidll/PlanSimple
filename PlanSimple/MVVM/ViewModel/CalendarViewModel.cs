@@ -1,4 +1,6 @@
 ﻿using PlanSimple.Core;
+using PlanSimple.Database.Model;
+using PlanSimple.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +9,13 @@ using System.Threading.Tasks;
 
 namespace PlanSimple.MVVM.ViewModel
 {
-    public class WeekDayModel
-    {
-        public string DayName { get; set; }
-        public int DayNumber { get; set; }
-    }
-
-    public class Day
 
     public class CalendarViewModel
     {       
-        public List<WeekDayModel> WeekDays { get; set; } = new List<WeekDayModel>();
+        public List<WeekDayModel> Week { get; set; } = new List<WeekDayModel>();
+        public List<ToDoModel> ToDoList { get; set; } = new List<ToDoModel>();
+        public List<ToDoListDisplayModel> Days { get; set; } = new List<ToDoListDisplayModel>();
+
         public CalendarViewModel()
         {
             SetTestData();
@@ -25,7 +23,7 @@ namespace PlanSimple.MVVM.ViewModel
 
         private void SetTestData()
         {
-            WeekDays = new List<WeekDayModel>
+            Week = new List<WeekDayModel>
             {
                new WeekDayModel{ DayName="Mon", DayNumber=25 },
                new WeekDayModel{ DayName="Tues", DayNumber=26 },
@@ -35,6 +33,49 @@ namespace PlanSimple.MVVM.ViewModel
                new WeekDayModel{ DayName="Sat", DayNumber=30 },
                new WeekDayModel{ DayName="Sun", DayNumber=1 }
             };
+            ToDoList = new List<ToDoModel>
+            {
+                new ToDoModel
+                {
+                    Title = "Learn English",
+                    Description = "Do english quizlet",
+                    Date = DateTime.Parse("06.11.2022"),
+                    Priority = Priority.Medium
+                },    
+                new ToDoModel
+                {
+                    Title = "Learn German",
+                    Description = "Do german quizlet",
+                    Date = DateTime.Parse("06.11.2022"),
+                    Priority = Priority.Medium
+                },                
+                new ToDoModel
+                {
+                    Title = "Learn Math",
+                    Description = "Learn calculus",
+                    Date = DateTime.Parse("03.11.2022"),
+                    Priority = Priority.Medium
+                },                
+                new ToDoModel
+                {
+                    Title = "Learn Coding",
+                    Description = "Do project",
+                    Date = DateTime.Parse("01.11.2022"),
+                    Priority = Priority.High
+                },
+            };
+            var groups = ToDoList.GroupBy(x => x.Date);
+
+            foreach (var g in groups)
+            {
+                ToDoListDisplayModel model = new ToDoListDisplayModel { Date = g.Key };
+                foreach (var element in g)
+                {
+                    model.ToDoList.Add(element);
+                }
+
+                Days.Add(model);
+            }
         }
     }
 }
