@@ -18,6 +18,10 @@
              
              <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
                  <view:NotesView/>
+             </DataTemplate>     
+             
+             <DataTemplate DataType="{x:Type viewModel:CalendarViewModel}">
+                 <view:CalendarView/>
              </DataTemplate>
              
              <DataTemplate DataType="{x:Type viewModel:NotesDisplayViewModel}">
