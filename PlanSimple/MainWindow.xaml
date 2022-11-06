@@ -35,13 +35,14 @@
             <StackPanel
                 Grid.Column="0"
                 Background="#101010">
-                <RadioButton Content="Home"
+                
+                <RadioButton Content="Calendar"
                              Height="50"
                              Foreground="#9FA4A8"
                              FontSize="22"
                              IsChecked="True"
                              Style="{StaticResource MainMenuNavigationButton}"
-                             Command="{Binding HomeViewCommand}"/>
+                             Command="{Binding CalendarViewCommand}"/>
 
                 <RadioButton Content="Notes"
                              Height="50"
@@ -50,13 +51,6 @@
                              Style="{StaticResource MainMenuNavigationButton}"
                              Command="{Binding NotesViewModelCommand}"/>
                 
-                <RadioButton Content="Calendar"
-                             Height="50"
-                             Foreground="#9FA4A8"
-                             FontSize="22"
-                             Style="{StaticResource MainMenuNavigationButton}"
-                             Command="{Binding CalendarViewCommand}"/>
-
             </StackPanel>
 
             <!-- currently selected menu content -->

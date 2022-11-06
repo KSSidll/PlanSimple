@@ -8,24 +8,20 @@ public class MainWindowViewModel : ObservableObject
 
 	public MainWindowViewModel()
 	{
-		HomeViewModel = new HomeViewModel();
-		NotesViewModel = new NotesViewModel();
         CalendarViewModel = new CalendarViewModel();
+		NotesViewModel = new NotesViewModel();
 
-		CurrentView = HomeViewModel;
+		CurrentView = CalendarViewModel;
 
-		HomeViewCommand = new RelayCommand(o => { CurrentView = HomeViewModel; });
-		NotesViewModelCommand = new RelayCommand(o => { CurrentView = NotesViewModel; });
         CalendarViewCommand = new RelayCommand(o => { CurrentView = CalendarViewModel; });
+		NotesViewModelCommand = new RelayCommand(o => { CurrentView = NotesViewModel; });
 	}
 
-	public RelayCommand HomeViewCommand { get; }
-	public RelayCommand NotesViewModelCommand { get; }
 	public RelayCommand CalendarViewCommand { get; }
+	public RelayCommand NotesViewModelCommand { get; }
 
-	public HomeViewModel HomeViewModel { get; }
-	public NotesViewModel NotesViewModel { get; }
 	public CalendarViewModel CalendarViewModel { get; }
+	public NotesViewModel NotesViewModel { get; }
 
 	public object? CurrentView
 	{

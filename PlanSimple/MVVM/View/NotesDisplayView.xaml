@@ -13,7 +13,7 @@
     
     <Grid Background="#161616">
         
-        <ListView ItemsSource="{Binding Notes}" 
+        <ListView ItemsSource="{Binding ToDoNotes}" 
                   Background="#161616"
                   Foreground="#9FA4A8"
                   BorderThickness="0">
@@ -26,15 +26,17 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         
                         <TextBlock Grid.Column="0" Text="{Binding NoteId}" Margin="5"/>
                         <CheckBox Grid.Column="1" IsChecked="{Binding Completed}" Margin="5"
                                   Command="{Binding DataContext.UpdateNote, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                   CommandParameter="{Binding}" />
-                        <TextBlock Grid.Column="2" Text="{Binding Content}" Margin="5"/>
-                        <TextBlock Grid.Column="3" Text="{Binding ExpireDate}" Margin="5"/>
-                        <Button Grid.Column="4" Content="X"
+                        <TextBlock Grid.Column="2" Text="{Binding Title}" Margin="5"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Description}" Margin="5"/>
+                        <TextBlock Grid.Column="4" Text="{Binding Date}" Margin="5"/>
+                        <Button Grid.Column="5" Content="X"
                                 Command="{Binding DataContext.DeleteNote, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                 CommandParameter="{Binding}" />
                     </Grid>

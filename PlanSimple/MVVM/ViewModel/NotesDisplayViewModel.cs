@@ -7,28 +7,28 @@ namespace PlanSimple.MVVM.ViewModel;
 
 public class NotesDisplayViewModel
 {
-	private static readonly NoteContext NoteContext = new();
+	private static readonly ToDoNoteContext ToDoNoteContext = new();
 
 	public NotesDisplayViewModel()
 	{
 		UpdateNote = new RelayCommand(o =>
 		{
-			if (o is not Note note) return;
-			NoteContext.Notes.Update(note);
-			NoteContext.SaveChanges();
+			if (o is not ToDoNote toDoNote) return;
+			ToDoNoteContext.ToDoNotes.Update(toDoNote);
+			ToDoNoteContext.SaveChanges();
 		});
 		
 		DeleteNote = new RelayCommand(o =>
 		{
-			if (o is not Note note) return;
-			NoteContext.Notes.Remove(note);
-			NoteContext.SaveChanges();
+			if (o is not ToDoNote toDoNote) return;
+			ToDoNoteContext.ToDoNotes.Remove(toDoNote);
+			ToDoNoteContext.SaveChanges();
 			
-			Notes.Remove(note);
+			ToDoNotes.Remove(toDoNote);
 		});
 	}
 
-	public ObservableCollection<Note> Notes { get; } = new(NoteContext.Notes);
+	public ObservableCollection<ToDoNote> ToDoNotes { get; } = new(ToDoNoteContext.ToDoNotes);
 	
 	public RelayCommand? UpdateNote { get; }
 	public RelayCommand? DeleteNote { get; }

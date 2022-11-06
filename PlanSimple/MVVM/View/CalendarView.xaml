@@ -73,12 +73,12 @@
                         <TextBlock Text="{Binding DisplayDate}" 
                                    FontWeight="Bold"
                                    Margin="0 0 0 5"/>
-                        <ListBox ItemsSource="{Binding ToDoList}" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <ListBox ItemsSource="{Binding ToDoNotes}" Background="{x:Null}" BorderBrush="{x:Null}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <RadioButton VerticalAlignment="Center"
-                                                    Margin="5 0 10 0" Foreground="#FF9FA4A8"/>
+                                        <CheckBox VerticalAlignment="Center"
+                                                  Margin="5 0 10 0" Foreground="#FF9FA4A8"/>
                                         <StackPanel Orientation="Vertical">
                                             <TextBlock Text="{Binding Title}" FontSize="18" 
                                                        Margin="0 0 0 5" Foreground="#FF9FA4A8"/>

@@ -7,26 +7,26 @@ namespace PlanSimple.MVVM.ViewModel;
 
 public class NoteEditViewModel
 {
-	private static readonly NoteContext NoteContext = new();
+	private static readonly ToDoNoteContext ToDoNoteContext = new();
 
 	public NoteEditViewModel()
 	{
 		SaveDataToDatabase = new RelayCommand(o =>
 		{
-			// Don't save if the note is empty
-			if (string.IsNullOrEmpty(Note.Content)) return;
+			// Don't save if the note doesn't have any set title
+			if (string.IsNullOrEmpty(ToDoNote.Title)) return;
 			
 			// Convert DateTime to DateOnly
 			// DatePicker supports DateTime but not DateOnly, but as we are only interested in DateOnly,
 			// We need to use another property for it and then convert it during save
-			if (Date != null) Note.ExpireDate = new DateOnly(Date.Value.Year, Date.Value.Month, Date.Value.Day);
+			if (Date != null) ToDoNote.Date = new DateOnly(Date.Value.Year, Date.Value.Month, Date.Value.Day);
 
-			NoteContext.Notes.Update(Note);
-			NoteContext.SaveChanges();
+			ToDoNoteContext.ToDoNotes.Update(ToDoNote);
+			ToDoNoteContext.SaveChanges();
 		});
 	}
 
 	public RelayCommand? SaveDataToDatabase { get; }
-	public Note Note { get; } = new();
+	public ToDoNote ToDoNote { get; } = new();
 	public DateTime? Date { get; set; }
 }

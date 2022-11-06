@@ -3,16 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PlanSimple.Database.Model;
 
-public class Note
+public class ToDoNote
 {
-	public Note(string? content = null)
-	{
-		Content = content;
-	}
-
 	[Key] public int NoteId { get; set; }
 
-	public string? Content { get; set; }
-	public DateOnly? ExpireDate { get; set; }
+	public string? Title { get; set; }
+	public string? Description { get; set; }
+	public DateOnly? Date { get; set; }
+	public Priority Priority { get; set; }
 	public bool Completed { get; set; }
 }
