@@ -19,14 +19,6 @@
                  <view:NotesView/>
              </DataTemplate>
              
-             <DataTemplate DataType="{x:Type viewModel:NotesDisplayViewModel}">
-                 <view:NotesDisplayView/>
-             </DataTemplate>
-             
-             <DataTemplate DataType="{x:Type viewModel:NoteEditViewModel}">
-                 <view:NoteEditView/>
-             </DataTemplate>
-             
          </ResourceDictionary>
     </Application.Resources>
 </Application>

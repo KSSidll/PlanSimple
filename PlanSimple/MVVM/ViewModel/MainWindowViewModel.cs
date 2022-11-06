@@ -14,11 +14,11 @@ public class MainWindowViewModel : ObservableObject
 		CurrentView = HomeViewModel;
 
 		HomeViewCommand = new RelayCommand(o => { CurrentView = HomeViewModel; });
-		NotesViewModelCommand = new RelayCommand(o => { CurrentView = NotesViewModel; });
+		NotesViewCommand = new RelayCommand(o => { CurrentView = NotesViewModel; });
 	}
 
 	public RelayCommand HomeViewCommand { get; }
-	public RelayCommand NotesViewModelCommand { get; }
+	public RelayCommand NotesViewCommand { get; }
 
 	public HomeViewModel HomeViewModel { get; }
 	public NotesViewModel NotesViewModel { get; }

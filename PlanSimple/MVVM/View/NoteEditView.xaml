@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
              xmlns:view="clr-namespace:PlanSimple.MVVM.View"
              mc:Ignorable="d"
@@ -35,15 +34,7 @@
                     Foreground="#9FA4A8"
                     BorderThickness="0"
                     Content="Save"
-                    Command="{Binding SaveDataToDatabase}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SaveDataToDatabase}"/>
-                        <i:InvokeCommandAction Command="{Binding DataContext.NotesDisplayViewCommand,
-                          RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
+                    Command="{Binding SaveDataToDatabase}" />
 
             <Button Grid.Column="1"
                     Background="#101010"

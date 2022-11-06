@@ -1,35 +1,28 @@
-﻿using PlanSimple.Core;
+using System.Collections.ObjectModel;
+using PlanSimple.Core;
+using PlanSimple.Database.Context;
+using PlanSimple.Database.Model;
 
 namespace PlanSimple.MVVM.ViewModel;
 
-public class NotesViewModel : ObservableObject
+public class NotesViewModel
 {
-	private object? _currentView;
-	
+	private static readonly NoteContext NoteContext = new();
+
 	public NotesViewModel()
 	{
-		NotesDisplayViewModel = new NotesDisplayViewModel();
-		NoteEditViewModel = new NoteEditViewModel();
-
-		CurrentView = NotesDisplayViewModel;
-
-		NotesDisplayViewCommand = new RelayCommand(o => { CurrentView = NotesDisplayViewModel; });
-		NoteEditViewCommand = new RelayCommand(o => { CurrentView = NoteEditViewModel; });
-	}
-
-	public RelayCommand NotesDisplayViewCommand { get; }
-	public RelayCommand NoteEditViewCommand { get; }
-
-	public NotesDisplayViewModel NotesDisplayViewModel { get; }
-	public NoteEditViewModel NoteEditViewModel { get; }
-
-	public object? CurrentView
-	{
-		get => _currentView;
-		set
+		AddNote = new RelayCommand(o =>
 		{
-			_currentView = value;
-			OnPropertyChanged();
-		}
+			Note note = new Note(NoteText);
+			NoteContext.Notes.Add(note);
+			NoteContext.SaveChanges();
+
+			Notes.Add(note);
+		});
 	}
+
+	public static ObservableCollection<Note> Notes { get; } = new(NoteContext.Notes);
+
+	public RelayCommand? AddNote { get; }
+	public string NoteText { get; set; } = string.Empty;
 }
