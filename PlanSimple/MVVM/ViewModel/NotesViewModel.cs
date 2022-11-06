@@ -1,4 +1,4 @@
-﻿using PlanSimple.Core;
+using PlanSimple.Core;
 
 namespace PlanSimple.MVVM.ViewModel;
 
