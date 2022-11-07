@@ -64,6 +64,8 @@ namespace PlanSimple.MVVM.ViewModel
                     Priority = Priority.High
                 },
             };
+
+            ToDoList = ToDoList.OrderBy(x => x.Date).ToList();
             var groups = ToDoList.GroupBy(x => x.Date);
 
             foreach (var g in groups)
