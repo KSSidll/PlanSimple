@@ -7,4 +7,5 @@
 /PlanSimple/obj
 /PlanSimpleTest/bin
 /PlanSimpleTest/obj
-/notes.db
+/.vs
+*.db
