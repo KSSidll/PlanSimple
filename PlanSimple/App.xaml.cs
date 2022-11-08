@@ -13,8 +13,8 @@ namespace PlanSimple
 		{
 			base.OnStartup(e);
 
-			DatabaseFacade noteDatabaseFacade = new DatabaseFacade(new NoteContext());
-			noteDatabaseFacade.EnsureCreated();
+			DatabaseFacade toDoNoteDatabaseFacade = new DatabaseFacade(new ToDoNoteContext());
+			toDoNoteDatabaseFacade.EnsureCreated();
 		}
 	}
 }

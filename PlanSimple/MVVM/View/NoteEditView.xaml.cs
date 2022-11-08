@@ -2,9 +2,9 @@
 
 namespace PlanSimple.MVVM.View;
 
-public partial class HomeView : UserControl
+public partial class NoteEditView : UserControl
 {
-	public HomeView()
+	public NoteEditView()
 	{
 		InitializeComponent();
 	}
