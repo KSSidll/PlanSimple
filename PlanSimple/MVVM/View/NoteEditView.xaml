@@ -35,10 +35,9 @@
                      Text="{Binding ToDoNote.Description}"/>
             
             <DatePicker Grid.Row="2"
-                        Style="{StaticResource NoteDatePicker}"
                         Margin="1,5,1,0"
-                        SelectedDate="{Binding Date, 
-                        UpdateSourceTrigger=PropertyChanged}"/>
+                        Style="{StaticResource NoteDatePicker}"
+                        SelectedDate="{Binding Date}"/>
         </Grid>
         
         <Grid Grid.Row="1">

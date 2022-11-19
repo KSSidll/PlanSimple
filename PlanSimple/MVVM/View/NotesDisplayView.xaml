@@ -27,6 +27,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         
                         <TextBlock Grid.Column="0" Text="{Binding NoteId}" Margin="5"/>
@@ -36,7 +37,10 @@
                         <TextBlock Grid.Column="2" Text="{Binding Title}" Margin="5"/>
                         <TextBlock Grid.Column="3" Text="{Binding Description}" Margin="5"/>
                         <TextBlock Grid.Column="4" Text="{Binding Date}" Margin="5"/>
-                        <Button Grid.Column="5" Content="X"
+                        <Button Grid.Column="5" Content="[]"
+                                Command="{Binding DataContext.NoteEditViewCommand, RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"
+                                CommandParameter="{Binding}" />
+                        <Button Grid.Column="6" Content="X"
                                 Command="{Binding DataContext.DeleteNote, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                 CommandParameter="{Binding}" />
                     </Grid>

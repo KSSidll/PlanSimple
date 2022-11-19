@@ -5,7 +5,7 @@ using PlanSimple.Database.Model;
 
 namespace PlanSimple.MVVM.ViewModel;
 
-public class NotesDisplayViewModel
+public class NotesDisplayViewModel : BaseViewModel
 {
 	private static readonly ToDoNoteContext ToDoNoteContext = new();
 

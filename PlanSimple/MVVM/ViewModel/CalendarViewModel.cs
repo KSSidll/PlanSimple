@@ -9,7 +9,7 @@ using PlanSimple.MVVM.Model;
 namespace PlanSimple.MVVM.ViewModel
 {
 
-    public class CalendarViewModel
+    public class CalendarViewModel : BaseViewModel
     {       
         public List<WeekDayModel> Week { get; set; } = new();
         public List<ToDoListDisplayModel> Days { get; set; } = new();

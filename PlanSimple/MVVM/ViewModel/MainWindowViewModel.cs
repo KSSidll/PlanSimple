@@ -2,9 +2,9 @@
 
 namespace PlanSimple.MVVM.ViewModel;
 
-public class MainWindowViewModel : ObservableObject
+public class MainWindowViewModel : BaseViewModel
 {
-	private object? _currentView;
+	private BaseViewModel? _currentView;
 
 	public MainWindowViewModel()
 	{
@@ -23,11 +23,12 @@ public class MainWindowViewModel : ObservableObject
 	public CalendarViewModel CalendarViewModel { get; }
 	public NotesViewModel NotesViewModel { get; }
 
-	public object? CurrentView
+	public BaseViewModel? CurrentView
 	{
 		get => _currentView;
 		set
 		{
+			if (Equals(value, _currentView)) return;
 			_currentView = value;
 			OnPropertyChanged();
 		}
