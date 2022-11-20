@@ -11,6 +11,7 @@
                  <ResourceDictionary Source="Theme/TextboxWithPlaceholderTheme.xaml"/>
                  <ResourceDictionary Source="Theme/DatePickerWithPlaceholderTheme.xaml"/>
                  <ResourceDictionary Source="Theme/NotesDisplayListViewTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/LabelTheme.xaml"/>
              </ResourceDictionary.MergedDictionaries>
              
              <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">

@@ -38,7 +38,6 @@
             
             <DatePicker Grid.Row="2"
                         Margin="1,5,1,0"
-                        Tag="Note Date..."
                         Style="{StaticResource DatePickerWithPlaceholder}"
                         SelectedDate="{Binding Date}"/>
         </Grid>
