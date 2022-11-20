@@ -13,10 +13,8 @@
     
     <Grid Background="#161616">
         
-        <ListView ItemsSource="{Binding ToDoNotes}" 
-                  Background="#161616"
-                  Foreground="#9FA4A8"
-                  BorderThickness="0">
+        <ListView ItemsSource="{Binding ToDoNotes}"
+                  Style="{StaticResource NotesDisplayListView}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -29,7 +27,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        
+        
                         <TextBlock Grid.Column="0" Text="{Binding NoteId}" Margin="5"/>
                         <CheckBox Grid.Column="1" IsChecked="{Binding Completed}" Margin="5"
                                   Command="{Binding DataContext.UpdateNote, RelativeSource={RelativeSource AncestorType=ItemsControl}}"

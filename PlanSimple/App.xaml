@@ -8,9 +8,9 @@
          <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
                  <ResourceDictionary Source="Theme/MainMenuNavigationButtonTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/NoteDescriptionTextboxTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/NoteTitleTextBoxTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/NoteDatePickerTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/TextboxWithPlaceholderTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/DatePickerWithPlaceholderTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/NotesDisplayListViewTheme.xaml"/>
              </ResourceDictionary.MergedDictionaries>
              
              <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">

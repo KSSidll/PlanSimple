@@ -27,16 +27,19 @@
             </Grid.RowDefinitions>
             
             <TextBox Grid.Row="0"
-                     Style="{StaticResource NoteTitleTextBox}"
+                     Tag="Note Title..."
+                     Style="{StaticResource TextboxWithPlaceholder}"
                      Text="{Binding ToDoNote.Title}"/>
             
             <TextBox Grid.Row="1"
-                     Style="{StaticResource NoteDescriptionTextBox}"
+                     Tag="Note Description..."
+                     Style="{StaticResource TextboxWithPlaceholder}"
                      Text="{Binding ToDoNote.Description}"/>
             
             <DatePicker Grid.Row="2"
                         Margin="1,5,1,0"
-                        Style="{StaticResource NoteDatePicker}"
+                        Tag="Note Date..."
+                        Style="{StaticResource DatePickerWithPlaceholder}"
                         SelectedDate="{Binding Date}"/>
         </Grid>
         

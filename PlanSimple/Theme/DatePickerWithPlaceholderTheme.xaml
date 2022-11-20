@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="NoteDatePicker"
+    <Style x:Key="DatePickerWithPlaceholder"
            BasedOn="{StaticResource {x:Type DatePicker}}"
            TargetType="{x:Type DatePicker}">
         <Setter Property="BorderThickness" Value="1"/>
@@ -31,7 +31,7 @@
                                         </TextBox.Style>
                                     </TextBox>
                                     <TextBlock IsHitTestVisible="False"
-                                               Text="Note Date..."
+                                               Text="{TemplateBinding Tag}"
                                                HorizontalAlignment="Left"
                                                Padding="5"
                                                Margin="5,0,0,0"
