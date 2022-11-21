@@ -5,12 +5,10 @@ namespace PlanSimple.MVVM.ViewModel;
 
 public class NotesViewModel : BaseViewModel
 {
-	private BaseViewModel? _currentView;
+	private static BaseViewModel? _currentView = new NotesDisplayViewModel();
 	
 	public NotesViewModel()
 	{
-		CurrentView = new NotesDisplayViewModel();
-
 		NotesDisplayViewCommand = new RelayCommand(o => { CurrentView = new NotesDisplayViewModel(); });
 		NoteEditViewCommand = new RelayCommand(o =>
 		{

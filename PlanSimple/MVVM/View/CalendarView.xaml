@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
+             xmlns:planSimple="clr-namespace:PlanSimple"
              mc:Ignorable="d" 
              Background="#161616"
              Foreground="#9FA4A8"
@@ -84,6 +85,12 @@
                                                        Margin="0 0 0 5" Foreground="#FF9FA4A8"/>
                                             <TextBlock Text="{Binding Description}" FontSize="14" Foreground="#FF9FA4A8"/>
                                         </StackPanel>
+                                        <StackPanel.InputBindings>
+                                            <MouseBinding Gesture="LeftDoubleClick"
+                                                          Command="{Binding DataContext.NoteEditViewCommand, 
+                                              RelativeSource={RelativeSource AncestorType={x:Type planSimple:MainWindow}}}"
+                                                          CommandParameter="{Binding}" />
+                                        </StackPanel.InputBindings>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

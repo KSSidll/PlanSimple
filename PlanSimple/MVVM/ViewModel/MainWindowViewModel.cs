@@ -1,27 +1,32 @@
 ﻿using PlanSimple.Core;
+using PlanSimple.Database.Model;
 
 namespace PlanSimple.MVVM.ViewModel;
 
 public class MainWindowViewModel : BaseViewModel
 {
-	private BaseViewModel? _currentView;
+	private static BaseViewModel? _currentView;
 
 	public MainWindowViewModel()
 	{
-        CalendarViewModel = new CalendarViewModel();
-		NotesViewModel = new NotesViewModel();
+		CurrentView = new CalendarViewModel();
 
-		CurrentView = CalendarViewModel;
-
-        CalendarViewCommand = new RelayCommand(o => { CurrentView = CalendarViewModel; });
-		NotesViewModelCommand = new RelayCommand(o => { CurrentView = NotesViewModel; });
+        CalendarViewCommand = new RelayCommand(o => { CurrentView = new CalendarViewModel(); });
+		NotesViewModelCommand = new RelayCommand(o => { CurrentView = new NotesViewModel(); });
+		
+		NoteEditViewCommand = new RelayCommand(o =>
+		{
+			if (o is not ToDoNote) return;
+			
+			CurrentView = new NotesViewModel();
+			if ((CurrentView as NotesViewModel)!.NoteEditViewCommand.CanExecute(o))
+				(CurrentView as NotesViewModel)!.NoteEditViewCommand.Execute(o);
+		});
 	}
 
 	public RelayCommand CalendarViewCommand { get; }
 	public RelayCommand NotesViewModelCommand { get; }
-
-	public CalendarViewModel CalendarViewModel { get; }
-	public NotesViewModel NotesViewModel { get; }
+	public RelayCommand NoteEditViewCommand { get; }
 
 	public BaseViewModel? CurrentView
 	{
