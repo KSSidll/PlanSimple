@@ -9,7 +9,7 @@ public class NotesViewModel : BaseViewModel
 	
 	public NotesViewModel()
 	{
-		NotesDisplayViewCommand = new RelayCommand(o => { CurrentView = new NotesDisplayViewModel(); });
+		NotesDisplayViewCommand = new RelayCommand(_ => { CurrentView = new NotesDisplayViewModel(); });
 		NoteEditViewCommand = new RelayCommand(o =>
 		{
 			if (o is ToDoNote note)

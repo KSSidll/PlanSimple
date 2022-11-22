@@ -6,8 +6,6 @@
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
              xmlns:planSimple="clr-namespace:PlanSimple"
              mc:Ignorable="d" 
-             Background="#161616"
-             Foreground="#9FA4A8"
              d:DesignHeight="450" d:DesignWidth="600">
 
     <UserControl.DataContext>
@@ -16,12 +14,12 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Week Days Row -->
-        <Grid Grid.Row="0" Background="#FF101010">
+        <Grid Grid.Row="0" Background="{StaticResource DarkGrey}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -29,13 +27,13 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" 
                     Padding="5 0" 
-                    Background="{x:Null}" Foreground="#FF9FA4A8" BorderBrush="{x:Null}"
+                    Background="{x:Null}" Foreground="{StaticResource LightGrey}" BorderBrush="{x:Null}"
                     >Prev</Button>
             <ListBox Grid.Column="1" 
                      ItemsSource="{Binding Week}" 
                      HorizontalContentAlignment="Stretch" 
                      FontSize="18" 
-                     Background="{x:Null}" Foreground="#FF9FA4A8" BorderBrush="{x:Null}">
+                     Background="{x:Null}" Foreground="{StaticResource LightGrey}" BorderBrush="{x:Null}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="7" />
@@ -52,7 +50,7 @@
             </ListBox>
             <Button Grid.Column="2" 
                     Padding="5 0" 
-                    Background="{x:Null}" Foreground="#FF9FA4A8" BorderBrush="{x:Null}"
+                    Background="{x:Null}" Foreground="{StaticResource LightGrey}" BorderBrush="{x:Null}"
                     >Next</Button>
         </Grid>
 
@@ -62,7 +60,7 @@
                  ItemsSource="{Binding Days}" 
                  HorizontalAlignment="Stretch"
                  FontSize="24" 
-                 Background="#FF161616" Foreground="#FF9FA4A8" BorderBrush="{x:Null}">
+                 Background="{StaticResource Grey}" Foreground="{StaticResource LightGrey}" BorderBrush="{x:Null}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel />
@@ -79,11 +77,11 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <CheckBox VerticalAlignment="Center"
-                                                  Margin="5 0 10 0" Foreground="#FF9FA4A8"/>
+                                                  Margin="5 0 10 0" Foreground="{StaticResource LightGrey}"/>
                                         <StackPanel Orientation="Vertical">
                                             <TextBlock Text="{Binding Title}" FontSize="18" 
-                                                       Margin="0 0 0 5" Foreground="#FF9FA4A8"/>
-                                            <TextBlock Text="{Binding Description}" FontSize="14" Foreground="#FF9FA4A8"/>
+                                                       Margin="0 0 0 5" Foreground="{StaticResource LightGrey}"/>
+                                            <TextBlock Text="{Binding Description}" FontSize="14" Foreground="{StaticResource LightGrey}"/>
                                         </StackPanel>
                                         <StackPanel.InputBindings>
                                             <MouseBinding Gesture="LeftDoubleClick"

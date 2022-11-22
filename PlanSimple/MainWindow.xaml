@@ -6,7 +6,7 @@
         xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="Plan Simple" Width="800" Height="600"
-        Background="#161616">
+        Background="{StaticResource Grey}">
     
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
@@ -21,7 +21,7 @@
         <!-- top menu -->
         <Rectangle
             Grid.Row="0"
-            Fill="#050505" />
+            Fill="{StaticResource VeryDarkGrey}" />
 
         <!-- main content -->
         <Grid
@@ -34,19 +34,19 @@
             <!-- navigation menu -->
             <StackPanel
                 Grid.Column="0"
-                Background="#101010">
+                Background="{StaticResource DarkGrey}">
                 
                 <RadioButton Content="Calendar"
-                             Height="50"
-                             Foreground="#9FA4A8"
+                             Height="60"
+                             Foreground="{StaticResource LightGrey}"
                              FontSize="22"
                              IsChecked="True"
                              Style="{StaticResource MainMenuNavigationButton}"
                              Command="{Binding CalendarViewCommand}"/>
 
                 <RadioButton Content="Notes"
-                             Height="50"
-                             Foreground="#9FA4A8"
+                             Height="60"
+                             Foreground="{StaticResource LightGrey}"
                              FontSize="22"
                              Style="{StaticResource MainMenuNavigationButton}"
                              Command="{Binding NotesViewModelCommand}"/>
@@ -55,7 +55,6 @@
 
             <!-- currently selected menu content -->
             <ContentControl Grid.Column="1"
-                            Margin="10" 
                             Content="{Binding CurrentView}"/>
         </Grid>
     </Grid>

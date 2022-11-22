@@ -31,7 +31,7 @@ public class NotesDisplayViewModel : BaseViewModel
 			ToDoNotes.Remove(toDoNote);
 		});
 		
-		ToggleDisplayCompleted = new RelayCommand(o =>
+		ToggleDisplayCompleted = new RelayCommand(_ =>
 		{
 			RefreshCollection();
 		});

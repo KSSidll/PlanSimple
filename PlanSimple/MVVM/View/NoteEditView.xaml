@@ -12,7 +12,7 @@
         <viewModel:NoteEditViewModel/>
     </UserControl.DataContext>
     
-    <Grid Background="#161616">
+    <Grid Background="{StaticResource Grey}">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="100"/>
@@ -49,8 +49,8 @@
             </Grid.ColumnDefinitions>
             
             <Button Grid.Column="0"
-                    Background="#101010"
-                    Foreground="#9FA4A8"
+                    Background="{StaticResource DarkGrey}"
+                    Foreground="{StaticResource LightGrey}"
                     BorderThickness="0"
                     Content="Save"
                     Command="{Binding SaveDataToDatabase}">
@@ -64,8 +64,8 @@
             </Button>
 
             <Button Grid.Column="1"
-                    Background="#101010"
-                    Foreground="#9FA4A8"
+                    Background="{StaticResource DarkGrey}"
+                    Foreground="{StaticResource LightGrey}"
                     BorderThickness="0"
                     Content="Exit"
                     Command="{Binding DataContext.NotesDisplayViewCommand,

@@ -11,8 +11,8 @@ public class MainWindowViewModel : BaseViewModel
 	{
 		CurrentView = new CalendarViewModel();
 
-        CalendarViewCommand = new RelayCommand(o => { CurrentView = new CalendarViewModel(); });
-		NotesViewModelCommand = new RelayCommand(o => { CurrentView = new NotesViewModel(); });
+        CalendarViewCommand = new RelayCommand(_ => { CurrentView = new CalendarViewModel(); });
+		NotesViewModelCommand = new RelayCommand(_ => { CurrentView = new NotesViewModel(); });
 		
 		NoteEditViewCommand = new RelayCommand(o =>
 		{
