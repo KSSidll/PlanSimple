@@ -16,6 +16,6 @@
     <Brush x:Key="TitleBarCloseButtonHoverColor">Crimson</Brush>
     
     <!-- navigation bar button specific -->
-    <Brush x:Key="NavigatiorBarButtonHoverColor">#303032</Brush>
+    <Brush x:Key="NavigationBarButtonHoverColor">#292B2F</Brush>
     
 </ResourceDictionary>

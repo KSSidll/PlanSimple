@@ -32,7 +32,7 @@
                     <Condition Property="IsMouseOver" Value="True"/>
                     <Condition Property="IsChecked" Value="False"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{StaticResource NavigatiorBarButtonHoverColor}"/>
+                <Setter Property="Background" Value="{StaticResource NavigationBarButtonHoverColor}"/>
             </MultiTrigger>
         </Style.Triggers>
         
