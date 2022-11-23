@@ -17,7 +17,7 @@
                     BorderThickness="2"
                     Background="{StaticResource DarkGrey}">
               
-              <ContentControl Visibility="Collapsed"
+              <ContentControl Visibility="Hidden"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Foreground="{StaticResource LightGrey}"
