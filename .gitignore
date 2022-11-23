@@ -1,8 +1,10 @@
 ﻿# IDE Configuration
 /.idea
+/.vs
 
 # Debug Configuration Files
 /PlanSimple/bin
 /PlanSimple/obj
 /PlanSimpleTest/bin
 /PlanSimpleTest/obj
+*.db

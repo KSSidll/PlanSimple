@@ -3,12 +3,12 @@ using PlanSimple.Database.Model;
 
 namespace PlanSimple.Database.Context;
 
-public class NoteContext : DbContext
+public class ToDoNoteContext : DbContext
 {
-	public DbSet<Note> Notes { get; set; }
+	public DbSet<ToDoNote> ToDoNotes { get; set; }
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
-		optionsBuilder.UseSqlite("Data source=notes.db");
+		optionsBuilder.UseSqlite("Data source=to-do-notes.db");
 	}
 }

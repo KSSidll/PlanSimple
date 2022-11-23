@@ -1,28 +1,41 @@
-using System.Collections.ObjectModel;
 using PlanSimple.Core;
-using PlanSimple.Database.Context;
 using PlanSimple.Database.Model;
 
 namespace PlanSimple.MVVM.ViewModel;
 
-public class NotesViewModel
+public class NotesViewModel : BaseViewModel
 {
-	private static readonly NoteContext NoteContext = new();
-
+	private static BaseViewModel? _currentView = new NotesDisplayViewModel();
+	
 	public NotesViewModel()
 	{
-		AddNote = new RelayCommand(o =>
+		NotesDisplayViewCommand = new RelayCommand(_ => { CurrentView = new NotesDisplayViewModel(); });
+		NoteEditViewCommand = new RelayCommand(o =>
 		{
-			Note note = new Note(NoteText);
-			NoteContext.Notes.Add(note);
-			NoteContext.SaveChanges();
-
-			Notes.Add(note);
+			if (o is ToDoNote note)
+			{
+				CurrentView = new NoteEditViewModel(note);
+			}
+			else
+			{
+				// Changing views calls parameterless constructor, so displayed note is a static property,
+				// because of that we need to call constructor with new ToDoNote() if we want to erase saved data
+				CurrentView = new NoteEditViewModel(new ToDoNote());
+			}
 		});
 	}
 
-	public static ObservableCollection<Note> Notes { get; } = new(NoteContext.Notes);
+	public RelayCommand NotesDisplayViewCommand { get; }
+	public RelayCommand NoteEditViewCommand { get; }
 
-	public RelayCommand? AddNote { get; }
-	public string NoteText { get; set; } = string.Empty;
+	public BaseViewModel? CurrentView
+	{
+		get => _currentView;
+		set
+		{
+			if(Equals(value, _currentView)) return;
+			_currentView = value;
+			OnPropertyChanged();
+		}
+	}
 }

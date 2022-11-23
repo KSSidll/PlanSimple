@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
              xmlns:view="clr-namespace:PlanSimple.MVVM.View"
              mc:Ignorable="d"
@@ -11,16 +12,34 @@
         <viewModel:NoteEditViewModel/>
     </UserControl.DataContext>
     
-    <Grid Background="#161616">
+    <Grid Background="{StaticResource Grey}">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         
-        <Grid Grid.Row="0">
-            <TextBox
-                Style="{StaticResource Textbox}"
-                Text="{Binding Note.Content, NotifyOnSourceUpdated=True}"/>
+        <Grid Grid.Row="0"
+              Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <TextBox Grid.Row="0"
+                     Tag="Note Title..."
+                     Style="{StaticResource TextboxWithPlaceholder}"
+                     Text="{Binding ToDoNote.Title}"/>
+            
+            <TextBox Grid.Row="1"
+                     Tag="Note Description..."
+                     Style="{StaticResource TextboxWithPlaceholder}"
+                     Text="{Binding ToDoNote.Description}"/>
+            
+            <DatePicker Grid.Row="2"
+                        Margin="1,5,1,0"
+                        Style="{StaticResource DatePickerWithPlaceholder}"
+                        SelectedDate="{Binding Date}"/>
         </Grid>
         
         <Grid Grid.Row="1">
@@ -30,15 +49,23 @@
             </Grid.ColumnDefinitions>
             
             <Button Grid.Column="0"
-                    Background="#101010"
-                    Foreground="#9FA4A8"
+                    Background="{StaticResource DarkGrey}"
+                    Foreground="{StaticResource LightGrey}"
                     BorderThickness="0"
                     Content="Save"
-                    Command="{Binding SaveDataToDatabase}" />
+                    Command="{Binding SaveDataToDatabase}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SaveDataToDatabase}"/>
+                        <i:InvokeCommandAction Command="{Binding DataContext.NotesDisplayViewCommand,
+                          RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
 
             <Button Grid.Column="1"
-                    Background="#101010"
-                    Foreground="#9FA4A8"
+                    Background="{StaticResource DarkGrey}"
+                    Foreground="{StaticResource LightGrey}"
                     BorderThickness="0"
                     Content="Exit"
                     Command="{Binding DataContext.NotesDisplayViewCommand,
