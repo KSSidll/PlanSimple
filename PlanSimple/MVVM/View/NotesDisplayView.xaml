@@ -11,9 +11,15 @@
         <viewModel:NotesDisplayViewModel/>
     </UserControl.DataContext>
     
-    <Grid Background="#161616">
+    <Grid Background="{StaticResource Grey}">
         
-        <ListView ItemsSource="{Binding ToDoNotes}"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <ListView Grid.Row="1"
+                  ItemsSource="{Binding ToDoNotes}"
                   Style="{StaticResource NotesDisplayListView}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -22,7 +28,7 @@
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="20"/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -76,8 +82,9 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <Button Background="#101010"
-                Foreground="#9FA4A8"
+        <Button Grid.Row="1"
+                Background="{StaticResource DarkGrey}"
+                Foreground="{StaticResource LightGrey}"
                 Width="60"
                 Height="60"
                 HorizontalAlignment="Right"
@@ -86,5 +93,21 @@
                 Content="Add"
                 Command="{Binding DataContext.NoteEditViewCommand,
                           RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
+        <Grid Grid.Row="0">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <CheckBox Grid.Column="0"
+                      IsChecked="{Binding DisplayCompleted, UpdateSourceTrigger=PropertyChanged}"
+                      Command="{Binding ToggleDisplayCompleted}"
+                      VerticalContentAlignment="Center"/>
+            <Label Grid.Column="1"
+                   Content="Display Completed Notes"
+                   HorizontalContentAlignment="Left"/>
+        </Grid>
+        
     </Grid>
 </UserControl>

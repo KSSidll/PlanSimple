@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using PlanSimple.Core;
 using PlanSimple.Database.Context;
 using PlanSimple.Database.Model;
@@ -11,11 +12,14 @@ public class NotesDisplayViewModel : BaseViewModel
 
 	public NotesDisplayViewModel()
 	{
+		RefreshCollection();
 		UpdateNote = new RelayCommand(o =>
 		{
 			if (o is not ToDoNote toDoNote) return;
 			ToDoNoteContext.ToDoNotes.Update(toDoNote);
 			ToDoNoteContext.SaveChanges();
+			
+			RefreshCollection();
 		});
 		
 		DeleteNote = new RelayCommand(o =>
@@ -26,10 +30,24 @@ public class NotesDisplayViewModel : BaseViewModel
 			
 			ToDoNotes.Remove(toDoNote);
 		});
+		
+		ToggleDisplayCompleted = new RelayCommand(_ =>
+		{
+			RefreshCollection();
+		});
 	}
 
-	public ObservableCollection<ToDoNote> ToDoNotes { get; } = new(ToDoNoteContext.ToDoNotes);
-	
+	private void RefreshCollection()
+	{
+		ToDoNotes = DisplayCompleted ? new ObservableCollection<ToDoNote>(ToDoNoteContext.ToDoNotes) : 
+			new ObservableCollection<ToDoNote>(ToDoNoteContext.ToDoNotes.Where(x => x.Completed == false));
+		OnPropertyChanged(nameof(ToDoNotes));
+	}
+
+	public ObservableCollection<ToDoNote> ToDoNotes { get; private set; } = null!;
+	public static bool DisplayCompleted { get; set; }
+
+	public RelayCommand? ToggleDisplayCompleted { get; }
 	public RelayCommand? UpdateNote { get; }
 	public RelayCommand? DeleteNote { get; }
 }

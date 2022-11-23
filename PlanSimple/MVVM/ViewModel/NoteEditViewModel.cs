@@ -16,7 +16,7 @@ public class NoteEditViewModel : BaseViewModel
 
 	public NoteEditViewModel()
 	{
-		SaveDataToDatabase = new RelayCommand(o =>
+		SaveDataToDatabase = new RelayCommand(_ =>
 		{
 			// Don't save if the note doesn't have any set title
 			if (string.IsNullOrEmpty(ToDoNote.Title)) return;
