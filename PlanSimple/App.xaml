@@ -8,7 +8,7 @@
          <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
                  <ResourceDictionary Source="Theme/Colors.xaml"/>
-                 
+
                  <ResourceDictionary Source="Theme/MainMenuNavigationButtonTheme.xaml"/>
                  <ResourceDictionary Source="Theme/TextboxWithPlaceholderTheme.xaml"/>
                  <ResourceDictionary Source="Theme/DatePickerWithPlaceholderTheme.xaml"/>

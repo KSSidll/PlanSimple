@@ -3,10 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
+        xmlns:controls="clr-namespace:PlanSimple.Controls"
         mc:Ignorable="d"
+        WindowStyle="None"
         Title="Plan Simple" Width="800" Height="600"
         Background="{StaticResource Grey}">
+    
+    <!-- declare top 32 pixels as title bar -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="32"
+                    ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}"/>
+    </WindowChrome.WindowChrome>
     
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
@@ -14,14 +23,72 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="32" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <!-- top menu -->
-        <Rectangle
-            Grid.Row="0"
-            Fill="{StaticResource VeryDarkGrey}" />
+        <!-- title bar -->
+        <Grid Grid.Row="0"
+              Background="{StaticResource VeryDarkGrey}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+                
+            <!-- minimize button -->
+            <controls:HoverButton Grid.Column="1" 
+                                  WindowChrome.IsHitTestVisibleInChrome="True"
+                                  Click="Minimize_Click"
+                                  Content="&#xE949;" 
+                                  FontFamily="Segoe MDL2 Assets" 
+                                  FontSize="10" 
+                                  Padding="15,15,15,5" 
+                                  HoverBackground="{StaticResource TitleBarButtonHoverColor}"
+                                  Background="Transparent"
+                                  HoverForeground="{StaticResource LightGrey}"
+                                  Foreground="{StaticResource LightGrey}"
+                                  BorderThickness="0" />
+            
+            <!-- maximise toggle button -->
+            <controls:HoverButton Grid.Column="2"
+                                  WindowChrome.IsHitTestVisibleInChrome="True"
+                                  Click="Maximize_Toggle_Click"
+                                  FontFamily="Segoe MDL2 Assets"
+                                  FontSize="10"
+                                  Padding="15,10"
+                                  HoverBackground="{StaticResource TitleBarButtonHoverColor}"
+                                  Background="Transparent"
+                                  HoverForeground="{StaticResource LightGrey}"
+                                  Foreground="{StaticResource LightGrey}"
+                                  BorderBrush="{x:Null}"
+                                  BorderThickness="0">
+                <i:Interaction.Triggers>
+                    <i:DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=WindowState}" Value="Maximized">
+                        <i:ChangePropertyAction PropertyName="Content" Value="&#xE923;"/>
+                    </i:DataTrigger>
+                    <i:DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=WindowState}" Value="Normal">
+                        <i:ChangePropertyAction PropertyName="Content" Value="&#xE739;"/>
+                    </i:DataTrigger>
+                </i:Interaction.Triggers>
+            </controls:HoverButton>
+            
+            <!-- close button -->
+            <controls:HoverButton Grid.Column="3" 
+                                  WindowChrome.IsHitTestVisibleInChrome="True"
+                                  Click="Close_Click" 
+                                  Content="&#xE106;" 
+                                  HoverBackground="{StaticResource TitleBarCloseButtonHoverColor}"
+                                  HoverForeground="White"
+                                  FontFamily="Segoe MDL2 Assets" 
+                                  FontSize="10" 
+                                  Padding="15,10" 
+                                  Background="Transparent" 
+                                  Foreground="{StaticResource LightGrey}"
+                                  BorderThickness="0"/>
+
+        </Grid>
 
         <!-- main content -->
         <Grid
