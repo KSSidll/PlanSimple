@@ -1,33 +1,39 @@
 ﻿using PlanSimple.Core;
+using PlanSimple.Database.Model;
 
 namespace PlanSimple.MVVM.ViewModel;
 
-public class MainWindowViewModel : ObservableObject
+public class MainWindowViewModel : BaseViewModel
 {
-	private object? _currentView;
+	private static BaseViewModel? _currentView;
 
 	public MainWindowViewModel()
 	{
-		HomeViewModel = new HomeViewModel();
-		NotesViewModel = new NotesViewModel();
+		CurrentView = new CalendarViewModel();
 
-		CurrentView = HomeViewModel;
-
-		HomeViewCommand = new RelayCommand(o => { CurrentView = HomeViewModel; });
-		NotesViewCommand = new RelayCommand(o => { CurrentView = NotesViewModel; });
+        CalendarViewCommand = new RelayCommand(_ => { CurrentView = new CalendarViewModel(); });
+		NotesViewModelCommand = new RelayCommand(_ => { CurrentView = new NotesViewModel(); });
+		
+		NoteEditViewCommand = new RelayCommand(o =>
+		{
+			if (o is not ToDoNote) return;
+			
+			CurrentView = new NotesViewModel();
+			if ((CurrentView as NotesViewModel)!.NoteEditViewCommand.CanExecute(o))
+				(CurrentView as NotesViewModel)!.NoteEditViewCommand.Execute(o);
+		});
 	}
 
-	public RelayCommand HomeViewCommand { get; }
-	public RelayCommand NotesViewCommand { get; }
+	public RelayCommand CalendarViewCommand { get; }
+	public RelayCommand NotesViewModelCommand { get; }
+	public RelayCommand NoteEditViewCommand { get; }
 
-	public HomeViewModel HomeViewModel { get; }
-	public NotesViewModel NotesViewModel { get; }
-
-	public object? CurrentView
+	public BaseViewModel? CurrentView
 	{
 		get => _currentView;
 		set
 		{
+			if (Equals(value, _currentView)) return;
 			_currentView = value;
 			OnPropertyChanged();
 		}
