@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
              xmlns:view="clr-namespace:PlanSimple.MVVM.View"
+             xmlns:controls="clr-namespace:PlanSimple.Controls"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.DataContext>
@@ -29,7 +30,7 @@
                           VerticalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />
-                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="25"/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -58,17 +59,27 @@
                         <Label Grid.Column="4"
                                Content="{Binding Date}" />
                         
-                        <Button Grid.Column="5"
-                                Content="[]" 
-                                Command="{Binding DataContext.NoteEditViewCommand,
-                                RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"
-                                CommandParameter="{Binding}" />
+                        <controls:HoverButton Grid.Column="5"
+                                              Background="{StaticResource DarkGrey}"
+                                              HoverBackground="{StaticResource VeryDarkGrey}"
+                                              Foreground="{StaticResource LightGrey}"
+                                              HoverForeground="{StaticResource LightGrey}"
+                                              BorderThickness="0"
+                                              Content="[]" 
+                                              Command="{Binding DataContext.NoteEditViewCommand,
+                                              RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"
+                                              CommandParameter="{Binding}" />
                         
-                        <Button Grid.Column="6" 
-                                Content="X" 
-                                Command="{Binding DataContext.DeleteNote,
-                                RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                CommandParameter="{Binding}" />
+                        <controls:HoverButton Grid.Column="6" 
+                                              Background="{StaticResource DarkGrey}"
+                                              HoverBackground="{StaticResource VeryDarkGrey}"
+                                              Foreground="{StaticResource LightGrey}"
+                                              HoverForeground="{StaticResource LightGrey}"
+                                              BorderThickness="0"
+                                              Content="X" 
+                                              Command="{Binding DataContext.DeleteNote,
+                                              RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                              CommandParameter="{Binding}" />
                         
                         <Grid.InputBindings>
                             <MouseBinding Gesture="LeftDoubleClick"
@@ -82,17 +93,19 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <Button Grid.Row="1"
-                Background="{StaticResource DarkGrey}"
-                Foreground="{StaticResource LightGrey}"
-                Width="60"
-                Height="60"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                BorderThickness="0"
-                Content="Add"
-                Command="{Binding DataContext.NoteEditViewCommand,
-                          RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
+        <controls:HoverButton Grid.Row="1"
+                              Background="{StaticResource DarkGrey}"
+                              HoverBackground="{StaticResource VeryDarkGrey}"
+                              Foreground="{StaticResource LightGrey}"
+                              HoverForeground="{StaticResource LightGrey}"
+                              Width="60"
+                              Height="60"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Bottom"
+                              BorderThickness="0"
+                              Content="Add"
+                              Command="{Binding DataContext.NoteEditViewCommand,
+                              RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
         <Grid Grid.Row="0">
             
             <Grid.ColumnDefinitions>
