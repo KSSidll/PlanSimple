@@ -6,6 +6,7 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
              xmlns:view="clr-namespace:PlanSimple.MVVM.View"
+             xmlns:controls="clr-namespace:PlanSimple.Controls"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.DataContext>
@@ -48,12 +49,14 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
-            <Button Grid.Column="0"
-                    Background="{StaticResource DarkGrey}"
-                    Foreground="{StaticResource LightGrey}"
-                    BorderThickness="0"
-                    Content="Save"
-                    Command="{Binding SaveDataToDatabase}">
+            <controls:HoverButton Grid.Column="0"
+                                  Background="{StaticResource DarkGrey}"
+                                  HoverBackground="{StaticResource VeryDarkGrey}"
+                                  Foreground="{StaticResource LightGrey}"
+                                  HoverForeground="{StaticResource LightGrey}"
+                                  BorderThickness="0"
+                                  Content="Save"
+                                  Command="{Binding SaveDataToDatabase}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding SaveDataToDatabase}"/>
@@ -61,15 +64,17 @@
                           RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-            </Button>
+            </controls:HoverButton>
 
-            <Button Grid.Column="1"
-                    Background="{StaticResource DarkGrey}"
-                    Foreground="{StaticResource LightGrey}"
-                    BorderThickness="0"
-                    Content="Exit"
-                    Command="{Binding DataContext.NotesDisplayViewCommand,
-                          RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}" />
+            <controls:HoverButton Grid.Column="1"
+                                  Background="{StaticResource DarkGrey}"
+                                  HoverBackground="{StaticResource VeryDarkGrey}"
+                                  Foreground="{StaticResource LightGrey}"
+                                  HoverForeground="{StaticResource LightGrey}"
+                                  BorderThickness="0"
+                                  Content="Exit"
+                                  Command="{Binding DataContext.NotesDisplayViewCommand,
+                                  RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}" />
         </Grid>
     </Grid>
 </UserControl>
