@@ -12,8 +12,11 @@
                  <ResourceDictionary Source="Theme/MainMenuNavigationButtonTheme.xaml"/>
                  <ResourceDictionary Source="Theme/TextboxWithPlaceholderTheme.xaml"/>
                  <ResourceDictionary Source="Theme/DatePickerWithPlaceholderTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/NotesDisplayListViewTheme.xaml"/>
+                 
+                 <ResourceDictionary Source="Theme/ListViewTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/ListBoxTheme.xaml"/>
                  <ResourceDictionary Source="Theme/LabelTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/CheckBoxTheme.xaml"/>
              </ResourceDictionary.MergedDictionaries>
              
              <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">

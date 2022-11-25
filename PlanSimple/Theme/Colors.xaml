@@ -11,8 +11,11 @@
     <!-- foreground -->
     <Brush x:Key="LightGrey">#bcddde</Brush>
 
-    
+    <!-- title bar button specific -->
     <Brush x:Key="TitleBarButtonHoverColor">#353535</Brush>
     <Brush x:Key="TitleBarCloseButtonHoverColor">Crimson</Brush>
     
+    <!-- navigation bar button specific -->
+    <Brush x:Key="NavigationBarButtonHoverColor">#292B2F</Brush>
+
 </ResourceDictionary>

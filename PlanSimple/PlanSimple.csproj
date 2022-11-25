@@ -19,6 +19,10 @@
 	    <Generator>MSBuild:Compile</Generator>
 	    <DependentUpon>HoverButton.cs</DependentUpon>
 	  </Page>
+	  <Page Update="Controls\HoverListBox.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	    <DependentUpon>HoverListBox.cs</DependentUpon>
+	  </Page>
 	</ItemGroup>
 
 </Project>
