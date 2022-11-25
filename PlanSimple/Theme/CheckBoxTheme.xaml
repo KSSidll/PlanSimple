@@ -15,7 +15,7 @@
                     Width="25"
                     Height="25"
                     BorderThickness="2"
-                    Background="{StaticResource DarkGrey}">
+                    Background="{StaticResource VeryDarkGrey}">
               
               <ContentControl Visibility="Hidden"
                               HorizontalAlignment="Center"
