@@ -34,7 +34,8 @@
                                   HoverForeground="{StaticResource LightGrey}" 
                                   BorderThickness="0"
                     >Prev</controls:HoverButton>
-            <ListBox Grid.Column="1" 
+            <controls:HoverListBox Grid.Column="1" 
+                                   HoverBackground="{StaticResource VeryDarkGrey}"
                      ItemsSource="{Binding Week}" 
                      HorizontalContentAlignment="Stretch" 
                      FontSize="18" 
@@ -54,7 +55,7 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-            </ListBox>
+            </controls:HoverListBox>
             <controls:HoverButton Grid.Column="2" 
                                   Padding="5 0" 
                                   Background="{StaticResource DarkGrey}" 
@@ -67,13 +68,14 @@
 
 
         <!-- To Do List -->
-        <ListBox Grid.Row="1" 
-                 ItemsSource="{Binding Days}" 
-                 HorizontalAlignment="Stretch"
-                 FontSize="24" 
-                 Background="{StaticResource Grey}" 
-                 Foreground="{StaticResource LightGrey}" 
-                 BorderBrush="{x:Null}">
+        <controls:HoverListBox Grid.Row="1" 
+                               HoverBackground="{StaticResource DarkGrey}"
+                               ItemsSource="{Binding Days}" 
+                               HorizontalAlignment="Stretch"
+                               FontSize="24" 
+                               Background="{StaticResource Grey}" 
+                               Foreground="{StaticResource LightGrey}" 
+                               BorderBrush="{x:Null}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel />
@@ -86,9 +88,10 @@
                         <TextBlock Text="{Binding DisplayDate}" 
                                    FontWeight="Bold"
                                    Margin="0 0 0 5"/>
-                        <ListBox ItemsSource="{Binding ToDoNotes}" 
-                                 Background="{x:Null}" 
-                                 BorderBrush="{x:Null}">
+                        <controls:HoverListBox ItemsSource="{Binding ToDoNotes}" 
+                                               HoverBackground="{StaticResource Grey}"
+                                               Background="{x:Null}" 
+                                               BorderBrush="{x:Null}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -113,11 +116,11 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
-                        </ListBox>
+                        </controls:HoverListBox>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
+        </controls:HoverListBox>
 
     </Grid>
 </UserControl>

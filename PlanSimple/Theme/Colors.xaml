@@ -17,5 +17,5 @@
     
     <!-- navigation bar button specific -->
     <Brush x:Key="NavigationBarButtonHoverColor">#292B2F</Brush>
-    
+
 </ResourceDictionary>
