@@ -1,6 +1,5 @@
 ﻿# IDE Configuration
 /.idea
-/.vs
 
 # Debug Configuration Files
 /PlanSimple/bin
