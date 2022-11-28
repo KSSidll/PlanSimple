@@ -15,12 +15,13 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="32.8"/>
+            <RowDefinition Height="27.2"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Week Days Row -->
-        <Grid Grid.Row="0" Background="{StaticResource DarkGrey}">
+        <Grid Grid.Row="0" Background="{StaticResource DarkGrey}" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -33,15 +34,16 @@
                                   Foreground="{StaticResource LightGrey}" 
                                   HoverForeground="{StaticResource LightGrey}" 
                                   BorderThickness="0"
-                                  Content="◀"/>
+                                  Content="◀"
+                                  Command="{Binding PreviousWeek}"/>
             <controls:HoverListBox Grid.Column="1" 
                                    HoverBackground="{StaticResource VeryDarkGrey}"
-                     ItemsSource="{Binding Week}" 
-                     HorizontalContentAlignment="Stretch" 
-                     FontSize="18" 
-                     Background="{x:Null}" 
-                     Foreground="{StaticResource LightGrey}" 
-                     BorderBrush="{x:Null}">
+                                   ItemsSource="{Binding Week}" 
+                                   HorizontalContentAlignment="Stretch" 
+                                   FontSize="18" 
+                                   Background="{x:Null}" 
+                                   Foreground="{StaticResource LightGrey}" 
+                                   BorderBrush="{x:Null}">                
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="7" />
@@ -63,15 +65,15 @@
                                   Foreground="{StaticResource LightGrey}" 
                                   HoverForeground="{StaticResource LightGrey}" 
                                   BorderThickness="0"
-                                  Content="▶"/>
+                                  Content="▶"
+                                  Command="{Binding NextWeek}"/>
         </Grid>
 
 
         <!-- To Do List -->
-        <controls:HoverListBox Grid.Row="1" 
+        <controls:HoverListBox Grid.Row="2" 
                                HoverBackground="{StaticResource DarkGrey}"
-                               ItemsSource="{Binding Days}" 
-                               HorizontalAlignment="Stretch"
+                               ItemsSource="{Binding Days}"
                                FontSize="24" 
                                Background="{StaticResource Grey}" 
                                Foreground="{StaticResource LightGrey}" 
