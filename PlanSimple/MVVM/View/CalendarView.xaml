@@ -26,24 +26,11 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-<<<<<<< Updated upstream
             <Button Grid.Column="0" 
                     Padding="5 0" 
                     Background="{x:Null}" Foreground="#FF9FA4A8" BorderBrush="{x:Null}"
                     >Prev</Button>
             <ListBox Grid.Column="1" 
-=======
-            <controls:HoverButton Grid.Column="0" 
-                                  Padding="15 0" 
-                                  Background="{StaticResource DarkGrey}" 
-                                  HoverBackground="{StaticResource VeryDarkGrey}" 
-                                  Foreground="{StaticResource LightGrey}" 
-                                  HoverForeground="{StaticResource LightGrey}" 
-                                  BorderThickness="0"
-                                  Content="◀"/>
-            <controls:HoverListBox Grid.Column="1" 
-                                   HoverBackground="{StaticResource VeryDarkGrey}"
->>>>>>> Stashed changes
                      ItemsSource="{Binding Week}" 
                      HorizontalContentAlignment="Stretch" 
                      FontSize="18" 
@@ -61,23 +48,11 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-<<<<<<< Updated upstream
             </ListBox>
             <Button Grid.Column="2" 
                     Padding="5 0" 
                     Background="{x:Null}" Foreground="#FF9FA4A8" BorderBrush="{x:Null}"
                     >Next</Button>
-=======
-            </controls:HoverListBox>
-            <controls:HoverButton Grid.Column="2" 
-                                  Padding="15 0" 
-                                  Background="{StaticResource DarkGrey}" 
-                                  HoverBackground="{StaticResource VeryDarkGrey}" 
-                                  Foreground="{StaticResource LightGrey}" 
-                                  HoverForeground="{StaticResource LightGrey}" 
-                                  BorderThickness="0"
-                                  Content="▶"/>
->>>>>>> Stashed changes
         </Grid>
 
 
