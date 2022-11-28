@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- content background -->
+    <Brush x:Key="Grey">#36393f</Brush>
+    
+    <!-- darker versions of content background -->
+    <Brush x:Key="DarkGrey">#2f3136</Brush>
+    <Brush x:Key="VeryDarkGrey">#202225</Brush>
+    
+    <!-- foreground -->
+    <Brush x:Key="LightGrey">#bcddde</Brush>
+
+    <!-- title bar button specific -->
+    <Brush x:Key="TitleBarButtonHoverColor">#353535</Brush>
+    <Brush x:Key="TitleBarCloseButtonHoverColor">Crimson</Brush>
+    
+    <!-- navigation bar button specific -->
+    <Brush x:Key="NavigationBarButtonHoverColor">#292B2F</Brush>
+
+</ResourceDictionary>

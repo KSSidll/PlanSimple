@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlanSimple.Database.Model
+namespace PlanSimple.MVVM.Model
 {
     public enum Priority
     {

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using PlanSimple.MVVM.Model;
 
 namespace PlanSimple.Database.Model;
 

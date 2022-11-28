@@ -11,7 +11,7 @@
     </UserControl.DataContext>
     
     <Grid>
-        <ContentControl Margin="10" 
+        <ContentControl Margin="0,10,10,10" 
                         Content="{Binding CurrentView}"/>
     </Grid>
 </UserControl>

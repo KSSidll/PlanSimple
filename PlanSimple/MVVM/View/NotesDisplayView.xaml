@@ -5,54 +5,121 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
              xmlns:view="clr-namespace:PlanSimple.MVVM.View"
+             xmlns:controls="clr-namespace:PlanSimple.Controls"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.DataContext>
         <viewModel:NotesDisplayViewModel/>
     </UserControl.DataContext>
     
-    <Grid Background="#161616">
+    <Grid Background="{StaticResource Grey}">
         
-        <ListView ItemsSource="{Binding ToDoNotes}" 
-                  Background="#161616"
-                  Foreground="#9FA4A8"
-                  BorderThickness="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <ListView Grid.Row="1"
+                  ItemsSource="{Binding ToDoNotes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Margin="0"
+                          Height="35"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="25"/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
+        
+                        <Label Grid.Column="0"
+                               HorizontalContentAlignment="Left"
+                               Content="{Binding NoteId}" />
                         
-                        <TextBlock Grid.Column="0" Text="{Binding NoteId}" Margin="5"/>
-                        <CheckBox Grid.Column="1" IsChecked="{Binding Completed}" Margin="5"
-                                  Command="{Binding DataContext.UpdateNote, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                        <CheckBox Grid.Column="1" 
+                                  HorizontalContentAlignment="Center"
+                                  VerticalContentAlignment="Center"
+                                  IsChecked="{Binding Completed}" 
+                                  Command="{Binding DataContext.UpdateNote,
+                                  RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                   CommandParameter="{Binding}" />
-                        <TextBlock Grid.Column="2" Text="{Binding Title}" Margin="5"/>
-                        <TextBlock Grid.Column="3" Text="{Binding Description}" Margin="5"/>
-                        <TextBlock Grid.Column="4" Text="{Binding Date}" Margin="5"/>
-                        <Button Grid.Column="5" Content="X"
-                                Command="{Binding DataContext.DeleteNote, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                CommandParameter="{Binding}" />
+                        
+                        <Label Grid.Column="2" 
+                               Content="{Binding Title}" />
+                        
+                        <Label Grid.Column="3" 
+                               Content="{Binding Description}" />
+                        
+                        <Label Grid.Column="4"
+                               Content="{Binding Date}" />
+                        
+                        <controls:HoverButton Grid.Column="5"
+                                              Background="{StaticResource DarkGrey}"
+                                              HoverBackground="{StaticResource VeryDarkGrey}"
+                                              Foreground="{StaticResource LightGrey}"
+                                              HoverForeground="{StaticResource LightGrey}"
+                                              BorderThickness="0"
+                                              Content="[]" 
+                                              Command="{Binding DataContext.NoteEditViewCommand,
+                                              RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"
+                                              CommandParameter="{Binding}" />
+                        
+                        <controls:HoverButton Grid.Column="6" 
+                                              Background="{StaticResource DarkGrey}"
+                                              HoverBackground="{StaticResource VeryDarkGrey}"
+                                              Foreground="{StaticResource LightGrey}"
+                                              HoverForeground="{StaticResource LightGrey}"
+                                              BorderThickness="0"
+                                              Content="X" 
+                                              Command="{Binding DataContext.DeleteNote,
+                                              RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                              CommandParameter="{Binding}" />
+                        
+                        <Grid.InputBindings>
+                            <MouseBinding Gesture="LeftDoubleClick"
+                                          Command="{Binding DataContext.NoteEditViewCommand, 
+                                          RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"
+                                          CommandParameter="{Binding}" />
+                        </Grid.InputBindings>
+                        
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         
-        <Button Background="#101010"
-                Foreground="#9FA4A8"
-                Width="60"
-                Height="60"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                BorderThickness="0"
-                Content="Add"
-                Command="{Binding DataContext.NoteEditViewCommand,
-                          RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
+        <controls:HoverButton Grid.Row="1"
+                              Background="{StaticResource DarkGrey}"
+                              HoverBackground="{StaticResource VeryDarkGrey}"
+                              Foreground="{StaticResource LightGrey}"
+                              HoverForeground="{StaticResource LightGrey}"
+                              Width="60"
+                              Height="60"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Bottom"
+                              BorderThickness="0"
+                              Content="Add"
+                              Command="{Binding DataContext.NoteEditViewCommand,
+                              RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
+        <Grid Grid.Row="0">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <CheckBox Grid.Column="0"
+                      IsChecked="{Binding DisplayCompleted, UpdateSourceTrigger=PropertyChanged}"
+                      Command="{Binding ToggleDisplayCompleted}"
+                      VerticalContentAlignment="Center"/>
+            <Label Grid.Column="1"
+                   Content="Display Completed Notes"
+                   HorizontalContentAlignment="Left"/>
+        </Grid>
+        
     </Grid>
 </UserControl>

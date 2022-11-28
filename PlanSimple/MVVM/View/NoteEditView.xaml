@@ -6,13 +6,14 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
              xmlns:view="clr-namespace:PlanSimple.MVVM.View"
+             xmlns:controls="clr-namespace:PlanSimple.Controls"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.DataContext>
         <viewModel:NoteEditViewModel/>
     </UserControl.DataContext>
     
-    <Grid Background="#161616">
+    <Grid Background="{StaticResource Grey}">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="100"/>
@@ -27,18 +28,19 @@
             </Grid.RowDefinitions>
             
             <TextBox Grid.Row="0"
-                     Style="{StaticResource NoteTitleTextBox}"
+                     Tag="Note Title..."
+                     Style="{StaticResource TextboxWithPlaceholder}"
                      Text="{Binding ToDoNote.Title}"/>
             
             <TextBox Grid.Row="1"
-                     Style="{StaticResource NoteDescriptionTextBox}"
+                     Tag="Note Description..."
+                     Style="{StaticResource TextboxWithPlaceholder}"
                      Text="{Binding ToDoNote.Description}"/>
             
             <DatePicker Grid.Row="2"
-                        Style="{StaticResource NoteDatePicker}"
                         Margin="1,5,1,0"
-                        SelectedDate="{Binding Date, 
-                        UpdateSourceTrigger=PropertyChanged}"/>
+                        Style="{StaticResource DatePickerWithPlaceholder}"
+                        SelectedDate="{Binding Date}"/>
         </Grid>
         
         <Grid Grid.Row="1">
@@ -47,12 +49,14 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
-            <Button Grid.Column="0"
-                    Background="#101010"
-                    Foreground="#9FA4A8"
-                    BorderThickness="0"
-                    Content="Save"
-                    Command="{Binding SaveDataToDatabase}">
+            <controls:HoverButton Grid.Column="0"
+                                  Background="{StaticResource DarkGrey}"
+                                  HoverBackground="{StaticResource VeryDarkGrey}"
+                                  Foreground="{StaticResource LightGrey}"
+                                  HoverForeground="{StaticResource LightGrey}"
+                                  BorderThickness="0"
+                                  Content="Save"
+                                  Command="{Binding SaveDataToDatabase}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding SaveDataToDatabase}"/>
@@ -60,15 +64,17 @@
                           RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-            </Button>
+            </controls:HoverButton>
 
-            <Button Grid.Column="1"
-                    Background="#101010"
-                    Foreground="#9FA4A8"
-                    BorderThickness="0"
-                    Content="Exit"
-                    Command="{Binding DataContext.NotesDisplayViewCommand,
-                          RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}" />
+            <controls:HoverButton Grid.Column="1"
+                                  Background="{StaticResource DarkGrey}"
+                                  HoverBackground="{StaticResource VeryDarkGrey}"
+                                  Foreground="{StaticResource LightGrey}"
+                                  HoverForeground="{StaticResource LightGrey}"
+                                  BorderThickness="0"
+                                  Content="Exit"
+                                  Command="{Binding DataContext.NotesDisplayViewCommand,
+                                  RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}" />
         </Grid>
     </Grid>
 </UserControl>
