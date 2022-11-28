@@ -27,13 +27,13 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <controls:HoverButton Grid.Column="0" 
-                                  Padding="5 0" 
+                                  Padding="15 0" 
                                   Background="{StaticResource DarkGrey}" 
                                   HoverBackground="{StaticResource VeryDarkGrey}" 
                                   Foreground="{StaticResource LightGrey}" 
                                   HoverForeground="{StaticResource LightGrey}" 
                                   BorderThickness="0"
-                    >Prev</controls:HoverButton>
+                                  Content="◀"/>
             <controls:HoverListBox Grid.Column="1" 
                                    HoverBackground="{StaticResource VeryDarkGrey}"
                      ItemsSource="{Binding Week}" 
@@ -57,13 +57,13 @@
                 </ListBox.ItemTemplate>
             </controls:HoverListBox>
             <controls:HoverButton Grid.Column="2" 
-                                  Padding="5 0" 
+                                  Padding="15 0" 
                                   Background="{StaticResource DarkGrey}" 
                                   HoverBackground="{StaticResource VeryDarkGrey}" 
                                   Foreground="{StaticResource LightGrey}" 
                                   HoverForeground="{StaticResource LightGrey}" 
                                   BorderThickness="0"
-            >Next</controls:HoverButton>
+                                  Content="▶"/>
         </Grid>
 
 
