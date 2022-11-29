@@ -72,8 +72,7 @@ namespace PlanSimple.MVVM.ViewModel
         {
             // filter out ToDoNotes that don't have any set date before grouping them into days 
             var groups = ToDoNotes
-                .Where(x => x.Date != null)
-                .Where(x => Week.First().Date <= x.Date && x.Date <= Week.Last().Date)
+                .Where(x => x.Date != null && Week.First().Date <= x.Date && x.Date <= Week.Last().Date)
                 .GroupBy(x => x.Date);
 
             Days.Clear();
@@ -88,11 +87,8 @@ namespace PlanSimple.MVVM.ViewModel
 
                 Days.Add(model);
             }
-            Days.ResetBindings();
         }
-
-
-        
+    
         private void SetTestData()
         {
 
