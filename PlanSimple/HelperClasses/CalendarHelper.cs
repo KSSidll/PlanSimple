@@ -34,12 +34,12 @@ namespace PlanSimple.HelperClasses
                 var x = (int)day.DayOfWeek - (int)DayOfWeek.Monday;
 
                 // before
-                for (int i = x; i > (int)day.DayOfWeek; i--)
+                for (int i = x; i > 0; i--)
                 {
                     week.Add(day.AddDays(-i));
                 }
-                // after
-                for (int i = 0; i <= (int)DayOfWeek.Saturday; i++)
+                // day + after
+                for (int i = 0; i <= (int)DayOfWeek.Saturday - (int)day.DayOfWeek + 1; i++)
                 {
                     week.Add(day.AddDays(i));
                 }

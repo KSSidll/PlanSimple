@@ -17,7 +17,7 @@ namespace PlanSimple.MVVM.ViewModel
     public class CalendarViewModel : BaseViewModel
     {       
         public BindingList<WeekDayModel> Week { get; set; } = new();
-        public List<ToDoListDisplayModel> Days { get; set; } = new();
+        public BindingList<ToDoListDisplayModel> Days { get; set; } = new();
 
         public RelayCommand? PreviousWeek { get; }
         public RelayCommand? NextWeek { get; }
@@ -35,9 +35,10 @@ namespace PlanSimple.MVVM.ViewModel
             {
                 for (int i = 0; i < Week.Count; i++)
                 {
-                    Week[i].Date = Week[i].Date.AddDays(7);
+                    Week[i].Date = Week[i].Date.AddDays(-7);
                 }
                 Week.ResetBindings();
+                GetNotesForWeek();
             });
 
             NextWeek = new RelayCommand(_ =>
@@ -47,6 +48,7 @@ namespace PlanSimple.MVVM.ViewModel
                     Week[i].Date = Week[i].Date.AddDays(7);
                 }
                 Week.ResetBindings();
+                GetNotesForWeek();
             });
         }
 
@@ -74,7 +76,7 @@ namespace PlanSimple.MVVM.ViewModel
                 .Where(x => Week.First().Date <= x.Date && x.Date <= Week.Last().Date)
                 .GroupBy(x => x.Date);
 
-            Days = new();
+            Days.Clear();
 
             foreach (var g in groups)
             {
@@ -86,6 +88,7 @@ namespace PlanSimple.MVVM.ViewModel
 
                 Days.Add(model);
             }
+            Days.ResetBindings();
         }
 
 
