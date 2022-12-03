@@ -107,7 +107,9 @@
                              Height="60"
                              Foreground="{StaticResource LightGrey}"
                              FontSize="22"
-                             IsChecked="True"
+                             IsChecked="{Binding CalendarNavButtonChecked, 
+                             UpdateSourceTrigger=PropertyChanged, 
+                             Mode=TwoWay}"
                              Style="{StaticResource MainMenuNavigationButton}"
                              Command="{Binding CalendarViewCommand}"/>
 
@@ -115,6 +117,9 @@
                              Height="60"
                              Foreground="{StaticResource LightGrey}"
                              FontSize="22"
+                             IsChecked="{Binding NotesNavButtonChecked, 
+                             UpdateSourceTrigger=PropertyChanged, 
+                             Mode=TwoWay}"
                              Style="{StaticResource MainMenuNavigationButton}"
                              Command="{Binding NotesViewModelCommand}"/>
                 
