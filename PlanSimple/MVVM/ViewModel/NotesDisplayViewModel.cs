@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using PlanSimple.Core;
 using PlanSimple.Database.Context;
 using PlanSimple.Database.Model;
@@ -9,7 +10,7 @@ namespace PlanSimple.MVVM.ViewModel;
 public class NotesDisplayViewModel : BaseViewModel
 {
 	private static readonly ToDoNoteContext ToDoNoteContext = new();
-
+	private static int _itemUpdateSkip;
 	public NotesDisplayViewModel()
 	{
 		RefreshCollection();
@@ -19,7 +20,17 @@ public class NotesDisplayViewModel : BaseViewModel
 			ToDoNoteContext.ToDoNotes.Update(toDoNote);
 			ToDoNoteContext.SaveChanges();
 			
-			RefreshCollection();
+			// Refresh displayed items when 1 seconds passes after last update
+			++_itemUpdateSkip;
+			new Task(async () =>
+			{
+				await Task.Delay(1000);
+				--_itemUpdateSkip;
+				
+				if (_itemUpdateSkip == 0)
+					RefreshCollection();
+			}).Start();
+			
 		});
 		
 		DeleteNote = new RelayCommand(o =>
