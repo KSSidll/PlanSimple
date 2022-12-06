@@ -17,6 +17,7 @@
                  <ResourceDictionary Source="Theme/ListBoxTheme.xaml"/>
                  <ResourceDictionary Source="Theme/LabelTheme.xaml"/>
                  <ResourceDictionary Source="Theme/CheckBoxTheme.xaml"/>
+                 <ResourceDictionary Source="Theme/ComboBoxTheme.xaml"/>
              </ResourceDictionary.MergedDictionaries>
              
              <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">

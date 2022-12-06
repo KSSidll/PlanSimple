@@ -7,6 +7,7 @@
              xmlns:viewModel="clr-namespace:PlanSimple.MVVM.ViewModel"
              xmlns:view="clr-namespace:PlanSimple.MVVM.View"
              xmlns:controls="clr-namespace:PlanSimple.Controls"
+             xmlns:helpers="clr-namespace:PlanSimple.HelperClasses"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.DataContext>
@@ -25,6 +26,7 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             
             <TextBox Grid.Row="0"
@@ -37,7 +39,26 @@
                      Style="{StaticResource TextboxWithPlaceholder}"
                      Text="{Binding ToDoNote.Description}"/>
             
-            <DatePicker Grid.Row="2"
+            <Grid Grid.Row="2"
+                  Margin="1,5,1,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Priority"/>
+                
+                <ComboBox Grid.Column="1"
+                          Padding="100,0,0,0"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          ItemsSource="{Binding ToDoNote.Priority, Converter={helpers:EnumToCollectionConverter}, Mode=OneTime}"
+                          SelectedValuePath="Item1"
+                          DisplayMemberPath="Item2"
+                          SelectedValue="{Binding ToDoNote.Priority}"
+                          Foreground="{StaticResource LightGrey}" />
+            </Grid>
+            
+            <DatePicker Grid.Row="3"
                         Margin="1,5,1,0"
                         Style="{StaticResource DatePickerWithPlaceholder}"
                         SelectedDate="{Binding Date}"/>
