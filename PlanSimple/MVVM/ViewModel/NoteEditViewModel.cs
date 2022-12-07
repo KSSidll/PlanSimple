@@ -13,7 +13,7 @@ public class NoteEditViewModel : BaseViewModel
 	// because of that we need to call constructor with new ToDoNote() if we want to erase saved data
 	private static ToDoNote _toDoNote = new();
 	private static DateTime? _date;
-
+	
 	public NoteEditViewModel()
 	{
 		SaveDataToDatabase = new RelayCommand(_ =>
