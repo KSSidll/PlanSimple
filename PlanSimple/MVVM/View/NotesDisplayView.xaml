@@ -12,7 +12,7 @@
         <viewModel:NotesDisplayViewModel/>
     </UserControl.DataContext>
     
-    <Grid Background="{StaticResource Grey}">
+    <Grid Background="{DynamicResource Background}">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -59,10 +59,10 @@
                                Content="{Binding Date}" />
                         
                         <controls:HoverButton Grid.Column="5"
-                                              Background="{StaticResource DarkGrey}"
-                                              HoverBackground="{StaticResource VeryDarkGrey}"
-                                              Foreground="{StaticResource LightGrey}"
-                                              HoverForeground="{StaticResource LightGrey}"
+                                              Background="{DynamicResource Background-3}"
+                                              HoverBackground="{DynamicResource Background-10}"
+                                              Foreground="{DynamicResource Foreground}"
+                                              HoverForeground="{DynamicResource Foreground}"
                                               BorderThickness="0"
                                               Content="&#xEB7E;"
                                               FontSize="17"
@@ -72,10 +72,10 @@
                                               CommandParameter="{Binding}" />
                         
                         <controls:HoverButton Grid.Column="6" 
-                                              Background="{StaticResource DarkGrey}"
-                                              HoverBackground="{StaticResource Crimson-35}"
-                                              Foreground="{StaticResource LightGrey}"
-                                              HoverForeground="{StaticResource LightGrey}"
+                                              Background="{DynamicResource Background-3}"
+                                              HoverBackground="{DynamicResource NoteDeleteButtonHoverBackground}"
+                                              Foreground="{DynamicResource Foreground}"
+                                              HoverForeground="{DynamicResource NoteDeleteButtonHoverForeground}"
                                               BorderThickness="0"
                                               Content="&#xE106;" 
                                               FontSize="17"
@@ -98,10 +98,10 @@
         
         <controls:HoverButton Grid.Row="1"
                               CornerRadius="40"
-                              Background="{StaticResource DarkGrey}"
-                              HoverBackground="{StaticResource VeryDarkGrey}"
-                              Foreground="{StaticResource LightGrey}"
-                              HoverForeground="{StaticResource LightGrey}"
+                              Background="{DynamicResource Background-3}"
+                              HoverBackground="{DynamicResource Background-10}"
+                              Foreground="{DynamicResource Foreground}"
+                              HoverForeground="{DynamicResource Foreground}"
                               Width="61"
                               Height="61"
                               HorizontalAlignment="Right"

@@ -1,29 +1,34 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:PlanSimple.Controls">
     <Style TargetType="ComboBox">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
+        </Style.Triggers>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="30"/>
-                        </Grid.ColumnDefinitions>
-                        <ToggleButton x:Name="ToggleButton"
-                                      Grid.Column="1"
-                                      Focusable="False"
-                                      ClickMode="Press"
-                                      IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, 
-                                      RelativeSource={RelativeSource TemplatedParent}}"/>
-                        <Border Grid.Column="0" Background="{StaticResource DarkGrey}">
+                        <Border Background="{DynamicResource Background-3}"
+                                x:Name="Border">
                             <ContentPresenter Content="{TemplateBinding SelectionBoxItem}"
                                               ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                               ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                                               HorizontalAlignment="Center"
                                               VerticalAlignment="Center"/>
                         </Border>
-                        <Popup Grid.Column="0" 
-                               x:Name="Popup"
+                        <controls:HoverToggleButton x:Name="ToggleButton"
+                                                    BorderThickness="0"
+                                                    Background="Transparent"
+                                                    Foreground="Transparent"
+                                                    HoverBackground="Transparent"
+                                                    HoverForeground="Transparent"
+                                                    Focusable="False"
+                                                    ClickMode="Press"
+                                                    IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Popup x:Name="Popup"
                                Placement="Bottom"
                                IsOpen="{TemplateBinding IsDropDownOpen}"
                                AllowsTransparency="True"
@@ -35,7 +40,7 @@
                                   MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <ScrollViewer SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True"
-                                                Background="{StaticResource DarkGrey}"
+                                                Background="{DynamicResource Background-3}"
                                                 KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>
                             </Grid>
@@ -72,14 +77,14 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" TargetName="Border" Value="{StaticResource VeryDarkGrey}"/>
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Background-10}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Border" Value="{StaticResource NavigationBarButtonHoverColor}"/>
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Background-5}"/>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

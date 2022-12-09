@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- dash `-` after Key name means approximately how much darker it is compared to origical without dash -->
+    <!-- this isn't meant to be accurate, it's only meant to convey which color is lighter/darker compared to some other -->
+    <!-- Crimson-12 means that this is approximately 12% darker than Crimson -->
+    <!-- Background2 means that this is approximately 2% lighter than Background -->
+    <!-- if a color is lightest/darkest possible yet has lighter/darker version, it's because of compatibility -->
+
+    <!-- title bar button specific -->
+    <Brush x:Key="TitleBarCloseButtonHoverBackground">Crimson</Brush>
+    
+    <!-- note deletion specific -->
+    <Brush x:Key="NoteDeleteButtonHoverBackground">#a30f2d</Brush>
+    <Brush x:Key="NoteDeleteButtonHoverForeground">#bcddde</Brush>
+
+    
+</ResourceDictionary>

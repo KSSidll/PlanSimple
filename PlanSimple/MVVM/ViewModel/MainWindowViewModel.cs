@@ -13,6 +13,7 @@ public class MainWindowViewModel : BaseViewModel
 
         CalendarViewCommand = new RelayCommand(_ => { CurrentView = new CalendarViewModel(); });
 		NotesViewModelCommand = new RelayCommand(_ => { CurrentView = new NotesViewModel(); });
+		OptionsViewCommand = new RelayCommand(_ => { CurrentView = new OptionsViewModel(); });
 		
 		NoteEditViewCommand = new RelayCommand(o =>
 		{
@@ -30,6 +31,7 @@ public class MainWindowViewModel : BaseViewModel
 	public RelayCommand CalendarViewCommand { get; }
 	public RelayCommand NotesViewModelCommand { get; }
 	public RelayCommand NoteEditViewCommand { get; }
+	public RelayCommand OptionsViewCommand { get; }
 
 	public bool CalendarNavButtonChecked { get; set; } = true;
 	public bool NotesNavButtonChecked { get; set; }
