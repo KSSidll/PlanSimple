@@ -27,6 +27,10 @@
 	    <Generator>MSBuild:Compile</Generator>
 	    <DependentUpon>NavigationButtonWithIcon.cs</DependentUpon>
 	  </Page>
+	  <Page Update="Controls\HoverToggleButton.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	    <DependentUpon>HoverToggleButton.cs</DependentUpon>
+	  </Page>
 	</ItemGroup>
 
 </Project>

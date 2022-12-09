@@ -8,6 +8,8 @@ namespace PlanSimple
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
+	// Disable ReSharper warning, part of pre-made boiler plate
+	// ReSharper disable once RedundantExtendsListEntry
 	public partial class MainWindow : Window
 	{
 		public MainWindow()
@@ -33,6 +35,8 @@ namespace PlanSimple
 		protected override void OnSourceInitialized(EventArgs e)
 		{
 			base.OnSourceInitialized(e);
+			// Disable ReSharper warning, part of pre-made boiler plate
+			// ReSharper disable once AssignNullToNotNullAttribute
 			((HwndSource)PresentationSource.FromVisual(this)).AddHook(HookProc);
 		}
 		
@@ -42,13 +46,19 @@ namespace PlanSimple
 			{
 				// We need to tell the system what our size should be when maximized. Otherwise it will cover the whole screen,
 				// including the task bar.
+				
+				// Disable ReSharper warning, part of pre-made boiler plate
+				#pragma warning disable CS8605
 				MINMAXINFO mmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
+				#pragma warning restore CS8605
 		
 				// Adjust the maximized size and position to fit the work area of the correct monitor
 				IntPtr monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
 		
 				if (monitor != IntPtr.Zero)
 				{
+					// Disable ReSharper warning, part of pre-made boiler plate
+					// ReSharper disable once UseObjectOrCollectionInitializer
 					MONITORINFO monitorInfo = new MONITORINFO();
 					monitorInfo.cbSize = Marshal.SizeOf(typeof(MONITORINFO));
 					GetMonitorInfo(monitor, ref monitorInfo);
@@ -66,8 +76,12 @@ namespace PlanSimple
 			return IntPtr.Zero;
 		}
 		
+		// Disable ReSharper warning, part of pre-made boiler plate
+		// ReSharper disable once InconsistentNaming
 		private const int WM_GETMINMAXINFO = 0x0024;
 		
+		// Disable ReSharper warning, part of pre-made boiler plate
+		// ReSharper disable once InconsistentNaming
 		private const uint MONITOR_DEFAULTTONEAREST = 0x00000002;
 		
 		[DllImport("user32.dll")]
@@ -78,6 +92,8 @@ namespace PlanSimple
 		
 		[Serializable]
 		[StructLayout(LayoutKind.Sequential)]
+		// Disable ReSharper warning, part of pre-made boiler plate
+		// ReSharper disable once InconsistentNaming
 		public struct RECT
 		{
 			public int Left;
@@ -95,16 +111,22 @@ namespace PlanSimple
 		}
 		
 		[StructLayout(LayoutKind.Sequential)]
+		// Disable ReSharper warning, part of pre-made boiler plate
+		// ReSharper disable once InconsistentNaming
 		public struct MONITORINFO
 		{
 			public int cbSize;
 			public RECT rcMonitor;
 			public RECT rcWork;
+			// Disable ReSharper warning, part of pre-made boiler plate
+			// ReSharper disable once FieldCanBeMadeReadOnly.Global
 			public uint dwFlags;
 		}
 		
 		[Serializable]
 		[StructLayout(LayoutKind.Sequential)]
+		// Disable ReSharper warning, part of pre-made boiler plate
+		// ReSharper disable once InconsistentNaming
 		public struct POINT
 		{
 			public int X;
@@ -118,6 +140,8 @@ namespace PlanSimple
 		}
 		
 		[StructLayout(LayoutKind.Sequential)]
+		// Disable ReSharper warning, part of pre-made boiler plate
+		// ReSharper disable once InconsistentNaming
 		public struct MINMAXINFO
 		{
 			public POINT ptReserved;
