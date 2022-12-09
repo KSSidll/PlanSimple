@@ -23,6 +23,10 @@
 	    <Generator>MSBuild:Compile</Generator>
 	    <DependentUpon>HoverListBox.cs</DependentUpon>
 	  </Page>
+	  <Page Update="Controls\NavigationButtonWithIcon.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	    <DependentUpon>NavigationButtonWithIcon.cs</DependentUpon>
+	  </Page>
 	</ItemGroup>
 
 </Project>
