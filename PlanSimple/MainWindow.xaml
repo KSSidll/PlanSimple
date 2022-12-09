@@ -99,12 +99,18 @@
             </Grid.ColumnDefinitions>
 
             <!-- navigation menu -->
-            <StackPanel
-                Grid.Column="0"
+            <Grid Grid.Column="0"
                 Background="{StaticResource DarkGrey}">
                 
-                <controls:NavigationButtonWithIcon Content="Calendar"
-                                                   Height="60"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                
+                <controls:NavigationButtonWithIcon Grid.Row="0" 
+                                                   Content="Calendar"
                                                    Icon="&#xE787;"
                                                    IconFontFamily="Segoe MDL2 Assets"
                                                    Foreground="{StaticResource LightGrey}"
@@ -112,8 +118,8 @@
                                                    IsChecked="{Binding CalendarNavButtonChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                    Command="{Binding CalendarViewCommand}"/>
 
-                <controls:NavigationButtonWithIcon Content="Notes"
-                                                   Height="60"
+                <controls:NavigationButtonWithIcon Grid.Row="1"
+                                                   Content="Notes"
                                                    Icon="&#xE762;"
                                                    IconFontFamily="Segoe MDL2 Assets"
                                                    Foreground="{StaticResource LightGrey}"
@@ -121,8 +127,18 @@
                                                    IsChecked="{Binding NotesNavButtonChecked, 
                                                    UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                    Command="{Binding NotesViewModelCommand}" />
+                
+                <controls:NavigationButtonWithIcon Grid.Row="3" 
+                                                   Content="Options"
+                                                   Icon="&#xE9F5;"
+                                                   IconFontFamily="Segoe MDL2 Assets"
+                                                   Foreground="{StaticResource LightGrey}"
+                                                   FontSize="22"
+                                                   IsChecked="{Binding NotesNavButtonChecked, 
+                                                   UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                   Command="{Binding OptionsViewCommand}" />
 
-            </StackPanel>
+            </Grid>
 
             <!-- currently selected menu content -->
             <ContentControl Grid.Column="1"

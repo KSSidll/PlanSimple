@@ -20,21 +20,24 @@
                  <ResourceDictionary Source="Theme/ComboBoxTheme.xaml"/>
              </ResourceDictionary.MergedDictionaries>
              
-             <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
-                 <view:NotesView/>
-             </DataTemplate>     
              
              <DataTemplate DataType="{x:Type viewModel:CalendarViewModel}">
                  <view:CalendarView/>
              </DataTemplate>
              
+             <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
+                 <view:NotesView/>
+             </DataTemplate>     
              <DataTemplate DataType="{x:Type viewModel:NotesDisplayViewModel}">
                  <view:NotesDisplayView/>
              </DataTemplate>
-             
              <DataTemplate DataType="{x:Type viewModel:NoteEditViewModel}">
                  <view:NoteEditView/>
              </DataTemplate>
+             
+             <DataTemplate DataType="{x:Type viewModel:OptionsViewModel}">
+                 <view:OptionsView/>
+             </DataTemplate>  
              
          </ResourceDictionary>
     </Application.Resources>
