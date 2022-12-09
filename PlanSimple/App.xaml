@@ -7,12 +7,21 @@
     <Application.Resources>
          <ResourceDictionary>
              <ResourceDictionary.MergedDictionaries>
-                 <ResourceDictionary Source="Theme/Colors.xaml"/>
+                 <!-- Colors -->
+                 <ResourceDictionary>
+                     <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="/Theme/Dark/Colors.xaml"/>
+                     </ResourceDictionary.MergedDictionaries>
+                 </ResourceDictionary>
 
+                 <ResourceDictionary Source="/Theme/UniversalColors.xaml"/>
+                 
+                 <!-- specific control themes -->
                  <ResourceDictionary Source="Theme/MainMenuNavigationButtonTheme.xaml"/>
                  <ResourceDictionary Source="Theme/TextboxWithPlaceholderTheme.xaml"/>
                  <ResourceDictionary Source="Theme/DatePickerWithPlaceholderTheme.xaml"/>
                  
+                 <!-- base control themes -->
                  <ResourceDictionary Source="Theme/ListViewTheme.xaml"/>
                  <ResourceDictionary Source="Theme/ListBoxTheme.xaml"/>
                  <ResourceDictionary Source="Theme/LabelTheme.xaml"/>

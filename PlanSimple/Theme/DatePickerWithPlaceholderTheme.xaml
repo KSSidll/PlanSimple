@@ -5,7 +5,7 @@
            TargetType="{x:Type DatePicker}">
         
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Background" Value="{StaticResource DarkGrey}"/>
+        <Setter Property="Background" Value="{DynamicResource Background-3}"/>
         
         <Style.Resources>
             <Style TargetType="{x:Type DatePickerTextBox}">
@@ -22,12 +22,12 @@
                                              UpdateSourceTrigger=PropertyChanged}"
                                              Padding="5"
                                              BorderThickness="0"
-                                             Background="{StaticResource DarkGrey}"
-                                             Foreground="{StaticResource LightGrey}"
+                                             Background="{DynamicResource Background-3}"
+                                             Foreground="{DynamicResource Foreground}"
                                              x:Name="Text">
                                         <TextBox.Style>
                                             <Style TargetType="{x:Type TextBox}">
-                                                <Setter Property="CaretBrush" Value="DarkGray"/>
+                                                <Setter Property="CaretBrush" Value="{DynamicResource PlaceholderForeground}"/>
                                             </Style>
                                         </TextBox.Style>
                                     </TextBox>

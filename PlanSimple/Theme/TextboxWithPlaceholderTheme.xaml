@@ -14,13 +14,13 @@
                                      Mode=TwoWay,
                                      UpdateSourceTrigger=PropertyChanged}"
                                      BorderThickness="0"
-                                     Background="{StaticResource DarkGrey}"
+                                     Background="{DynamicResource Background-3}"
                                      Padding="5"
-                                     Foreground="{StaticResource LightGrey}"
+                                     Foreground="{DynamicResource Foreground}"
                                      x:Name="Text">
                                 <TextBox.Style>
                                     <Style TargetType="{x:Type TextBox}">
-                                        <Setter Property="CaretBrush" Value="DarkGray"/>
+                                        <Setter Property="CaretBrush" Value="{DynamicResource PlaceholderForeground}"/>
                                     </Style>
                                 </TextBox.Style>
                             </TextBox>

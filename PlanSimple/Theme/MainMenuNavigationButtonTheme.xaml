@@ -4,7 +4,7 @@
            TargetType="{x:Type RadioButton}"
            x:Key="MainMenuNavigationButton">
         
-        <Setter Property="Background" Value="{StaticResource DarkGrey}"/>
+        <Setter Property="Background" Value="{DynamicResource Background-3}"/>
         <Setter Property="BorderThickness" Value="0"/>
         
         <Setter Property="Template">
@@ -25,14 +25,14 @@
         
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="{StaticResource VeryDarkGrey}"/>
+                <Setter Property="Background" Value="{DynamicResource Background-10}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsMouseOver" Value="True"/>
                     <Condition Property="IsChecked" Value="False"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{StaticResource NavigationBarButtonHoverColor}"/>
+                <Setter Property="Background" Value="{DynamicResource Background-5}"/>
             </MultiTrigger>
         </Style.Triggers>
         

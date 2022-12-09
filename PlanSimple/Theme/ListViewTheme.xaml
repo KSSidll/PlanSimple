@@ -41,7 +41,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="UIElement.IsMouseOver" Value="True">
-                            <Setter Property="Panel.Background" TargetName="border" Value="{StaticResource DarkGrey}"/>
+                            <Setter Property="Panel.Background" TargetName="border" Value="{DynamicResource Background-3}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

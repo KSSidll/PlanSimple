@@ -15,7 +15,7 @@
                                       ClickMode="Press"
                                       IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, 
                                       RelativeSource={RelativeSource TemplatedParent}}"/>
-                        <Border Grid.Column="0" Background="{StaticResource DarkGrey}">
+                        <Border Grid.Column="0" Background="{DynamicResource Background-3}">
                             <ContentPresenter Content="{TemplateBinding SelectionBoxItem}"
                                               ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                               ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
@@ -35,7 +35,7 @@
                                   MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <ScrollViewer SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True"
-                                                Background="{StaticResource DarkGrey}"
+                                                Background="{DynamicResource Background-3}"
                                                 KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>
                             </Grid>
@@ -72,14 +72,14 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" TargetName="Border" Value="{StaticResource VeryDarkGrey}"/>
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Background-10}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Border" Value="{StaticResource NavigationBarButtonHoverColor}"/>
+                            <Setter Property="Background" TargetName="Border" Value="{DynamicResource Background-5}"/>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

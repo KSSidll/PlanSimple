@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <!-- Week Days Row -->
-        <Grid Grid.Row="0" Background="{StaticResource DarkGrey}" Grid.RowSpan="2">
+        <Grid Grid.Row="0" Background="{DynamicResource Background-3}" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -29,20 +29,20 @@
             </Grid.ColumnDefinitions>
             <controls:HoverButton Grid.Column="0" 
                                   Padding="15 0" 
-                                  Background="{StaticResource DarkGrey}" 
-                                  HoverBackground="{StaticResource VeryDarkGrey}" 
-                                  Foreground="{StaticResource LightGrey}" 
-                                  HoverForeground="{StaticResource LightGrey}" 
+                                  Background="{DynamicResource Background-3}" 
+                                  HoverBackground="{DynamicResource Background-10}" 
+                                  Foreground="{DynamicResource Foreground}" 
+                                  HoverForeground="{DynamicResource Foreground}" 
                                   BorderThickness="0"
                                   Content="◀"
                                   Command="{Binding PreviousWeek}"/>
             <controls:HoverListBox Grid.Column="1" 
-                                   HoverBackground="{StaticResource VeryDarkGrey}"
+                                   HoverBackground="{DynamicResource Background-10}"
                                    ItemsSource="{Binding Week}" 
                                    HorizontalContentAlignment="Stretch" 
                                    FontSize="18" 
                                    Background="{x:Null}" 
-                                   Foreground="{StaticResource LightGrey}" 
+                                   Foreground="{DynamicResource Foreground}" 
                                    BorderBrush="{x:Null}">                
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -60,10 +60,10 @@
             </controls:HoverListBox>
             <controls:HoverButton Grid.Column="2" 
                                   Padding="15 0" 
-                                  Background="{StaticResource DarkGrey}" 
-                                  HoverBackground="{StaticResource VeryDarkGrey}" 
-                                  Foreground="{StaticResource LightGrey}" 
-                                  HoverForeground="{StaticResource LightGrey}" 
+                                  Background="{DynamicResource Background-3}" 
+                                  HoverBackground="{DynamicResource Background-10}" 
+                                  Foreground="{DynamicResource Foreground}" 
+                                  HoverForeground="{DynamicResource Foreground}" 
                                   BorderThickness="0"
                                   Content="▶"
                                   Command="{Binding NextWeek}"/>
@@ -72,11 +72,11 @@
 
         <!-- To Do List -->
         <controls:HoverListBox Grid.Row="2" 
-                               HoverBackground="{StaticResource DarkGrey}"
+                               HoverBackground="{DynamicResource Background-3}"
                                ItemsSource="{Binding Days}"
                                FontSize="24" 
-                               Background="{StaticResource Grey}" 
-                               Foreground="{StaticResource LightGrey}" 
+                               Background="{DynamicResource Background}" 
+                               Foreground="{DynamicResource Foreground}" 
                                BorderBrush="{x:Null}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -91,7 +91,7 @@
                                    FontWeight="Bold"
                                    Margin="0 0 0 5"/>
                         <controls:HoverListBox ItemsSource="{Binding ToDoNotes}" 
-                                               HoverBackground="{StaticResource Grey}"
+                                               HoverBackground="{DynamicResource Background}"
                                                Background="{x:Null}" 
                                                BorderBrush="{x:Null}">
                             <ListBox.ItemTemplate>
@@ -105,20 +105,20 @@
                                         <CheckBox Grid.Column="0"
                                                   VerticalAlignment="Center"
                                                   Margin="5 0 10 0" 
-                                                  Foreground="{StaticResource LightGrey}"/>
+                                                  Foreground="{DynamicResource Foreground}"/>
                                         <StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Label Content="{Binding Title}" 
                                                    HorizontalContentAlignment="Left"
                                                    VerticalContentAlignment="Center"
                                                    FontSize="18" 
                                                    Padding="0 5 0 5" 
-                                                   Foreground="{StaticResource LightGrey}"/>
+                                                   Foreground="{DynamicResource Foreground}"/>
                                             <Label Content="{Binding Description}"
                                                    HorizontalContentAlignment="Left"
                                                    VerticalContentAlignment="Center"
                                                    FontSize="14" 
                                                    Padding="0 0 0 5"
-                                                   Foreground="{StaticResource LightGrey}"/>
+                                                   Foreground="{DynamicResource Foreground}"/>
                                         </StackPanel>
                                         <Grid.InputBindings>
                                             <MouseBinding Gesture="LeftDoubleClick"

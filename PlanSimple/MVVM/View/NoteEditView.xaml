@@ -14,7 +14,7 @@
         <viewModel:NoteEditViewModel/>
     </UserControl.DataContext>
     
-    <Grid Background="{StaticResource Grey}">
+    <Grid Background="{DynamicResource Background}">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="100"/>
@@ -55,7 +55,7 @@
                           SelectedValuePath="Item1"
                           DisplayMemberPath="Item2"
                           SelectedValue="{Binding ToDoNote.Priority}"
-                          Foreground="{StaticResource LightGrey}" />
+                          Foreground="{DynamicResource Foreground}" />
             </Grid>
             
             <DatePicker Grid.Row="3"
@@ -71,10 +71,10 @@
             </Grid.ColumnDefinitions>
             
             <controls:HoverButton Grid.Column="0"
-                                  Background="{StaticResource DarkGrey}"
-                                  HoverBackground="{StaticResource VeryDarkGrey}"
-                                  Foreground="{StaticResource LightGrey}"
-                                  HoverForeground="{StaticResource LightGrey}"
+                                  Background="{DynamicResource Background-3}"
+                                  HoverBackground="{DynamicResource Background-10}"
+                                  Foreground="{DynamicResource Foreground}"
+                                  HoverForeground="{DynamicResource Foreground}"
                                   BorderThickness="0"
                                   Content="Save"
                                   Command="{Binding SaveDataToDatabase}">
@@ -88,10 +88,10 @@
             </controls:HoverButton>
 
             <controls:HoverButton Grid.Column="1"
-                                  Background="{StaticResource DarkGrey}"
-                                  HoverBackground="{StaticResource VeryDarkGrey}"
-                                  Foreground="{StaticResource LightGrey}"
-                                  HoverForeground="{StaticResource LightGrey}"
+                                  Background="{DynamicResource Background-3}"
+                                  HoverBackground="{DynamicResource Background-10}"
+                                  Foreground="{DynamicResource Foreground}"
+                                  HoverForeground="{DynamicResource Foreground}"
                                   BorderThickness="0"
                                   Content="Exit"
                                   Command="{Binding DataContext.NotesDisplayViewCommand,
