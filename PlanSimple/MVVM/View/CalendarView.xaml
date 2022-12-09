@@ -15,33 +15,35 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="32.8"/>
+            <RowDefinition Height="27.2"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Week Days Row -->
-        <Grid Grid.Row="0" Background="{StaticResource DarkGrey}">
+        <Grid Grid.Row="0" Background="{StaticResource DarkGrey}" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <controls:HoverButton Grid.Column="0" 
-                                  Padding="5 0" 
+                                  Padding="15 0" 
                                   Background="{StaticResource DarkGrey}" 
                                   HoverBackground="{StaticResource VeryDarkGrey}" 
                                   Foreground="{StaticResource LightGrey}" 
                                   HoverForeground="{StaticResource LightGrey}" 
                                   BorderThickness="0"
-                    >Prev</controls:HoverButton>
+                                  Content="◀"
+                                  Command="{Binding PreviousWeek}"/>
             <controls:HoverListBox Grid.Column="1" 
                                    HoverBackground="{StaticResource VeryDarkGrey}"
-                     ItemsSource="{Binding Week}" 
-                     HorizontalContentAlignment="Stretch" 
-                     FontSize="18" 
-                     Background="{x:Null}" 
-                     Foreground="{StaticResource LightGrey}" 
-                     BorderBrush="{x:Null}">
+                                   ItemsSource="{Binding Week}" 
+                                   HorizontalContentAlignment="Stretch" 
+                                   FontSize="18" 
+                                   Background="{x:Null}" 
+                                   Foreground="{StaticResource LightGrey}" 
+                                   BorderBrush="{x:Null}">                
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="7" />
@@ -57,21 +59,21 @@
                 </ListBox.ItemTemplate>
             </controls:HoverListBox>
             <controls:HoverButton Grid.Column="2" 
-                                  Padding="5 0" 
+                                  Padding="15 0" 
                                   Background="{StaticResource DarkGrey}" 
                                   HoverBackground="{StaticResource VeryDarkGrey}" 
                                   Foreground="{StaticResource LightGrey}" 
                                   HoverForeground="{StaticResource LightGrey}" 
                                   BorderThickness="0"
-            >Next</controls:HoverButton>
+                                  Content="▶"
+                                  Command="{Binding NextWeek}"/>
         </Grid>
 
 
         <!-- To Do List -->
-        <controls:HoverListBox Grid.Row="1" 
+        <controls:HoverListBox Grid.Row="2" 
                                HoverBackground="{StaticResource DarkGrey}"
-                               ItemsSource="{Binding Days}" 
-                               HorizontalAlignment="Stretch"
+                               ItemsSource="{Binding Days}"
                                FontSize="24" 
                                Background="{StaticResource Grey}" 
                                Foreground="{StaticResource LightGrey}" 
@@ -94,26 +96,37 @@
                                                BorderBrush="{x:Null}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <CheckBox VerticalAlignment="Center"
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <CheckBox Grid.Column="0"
+                                                  VerticalAlignment="Center"
                                                   Margin="5 0 10 0" 
                                                   Foreground="{StaticResource LightGrey}"/>
-                                        <StackPanel Orientation="Vertical">
-                                            <TextBlock Text="{Binding Title}" 
-                                                       FontSize="18" 
-                                                       Margin="0 0 0 5" 
-                                                       Foreground="{StaticResource LightGrey}"/>
-                                            <TextBlock Text="{Binding Description}" 
-                                                       FontSize="14" 
-                                                       Foreground="{StaticResource LightGrey}"/>
+                                        <StackPanel Grid.Column="1" Orientation="Vertical">
+                                            <Label Content="{Binding Title}" 
+                                                   HorizontalContentAlignment="Left"
+                                                   VerticalContentAlignment="Center"
+                                                   FontSize="18" 
+                                                   Padding="0 5 0 5" 
+                                                   Foreground="{StaticResource LightGrey}"/>
+                                            <Label Content="{Binding Description}"
+                                                   HorizontalContentAlignment="Left"
+                                                   VerticalContentAlignment="Center"
+                                                   FontSize="14" 
+                                                   Padding="0 0 0 5"
+                                                   Foreground="{StaticResource LightGrey}"/>
                                         </StackPanel>
-                                        <StackPanel.InputBindings>
+                                        <Grid.InputBindings>
                                             <MouseBinding Gesture="LeftDoubleClick"
                                                           Command="{Binding DataContext.NoteEditViewCommand, 
                                                           RelativeSource={RelativeSource AncestorType={x:Type planSimple:MainWindow}}}"
                                                           CommandParameter="{Binding}" />
-                                        </StackPanel.InputBindings>
-                                    </StackPanel>
+                                        </Grid.InputBindings>
+                                    </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </controls:HoverListBox>

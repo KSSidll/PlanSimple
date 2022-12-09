@@ -24,5 +24,10 @@ namespace PlanSimple.MVVM.View
         {
             InitializeComponent();
         }
+
+        private void HoverButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

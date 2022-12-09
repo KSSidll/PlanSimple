@@ -3,6 +3,7 @@
     
     <!-- content background -->
     <Brush x:Key="Grey">#36393f</Brush>
+    <Brush x:Key="Crimson-35">#a30f2d</Brush>
     
     <!-- darker versions of content background -->
     <Brush x:Key="DarkGrey">#2f3136</Brush>

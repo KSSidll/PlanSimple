@@ -103,21 +103,25 @@
                 Grid.Column="0"
                 Background="{StaticResource DarkGrey}">
                 
-                <RadioButton Content="Calendar"
-                             Height="60"
-                             Foreground="{StaticResource LightGrey}"
-                             FontSize="22"
-                             IsChecked="True"
-                             Style="{StaticResource MainMenuNavigationButton}"
-                             Command="{Binding CalendarViewCommand}"/>
+                <controls:NavigationButtonWithIcon Content="Calendar"
+                                                   Height="60"
+                                                   Icon="&#xE787;"
+                                                   IconFontFamily="Segoe MDL2 Assets"
+                                                   Foreground="{StaticResource LightGrey}"
+                                                   FontSize="22"
+                                                   IsChecked="{Binding CalendarNavButtonChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                   Command="{Binding CalendarViewCommand}"/>
 
-                <RadioButton Content="Notes"
-                             Height="60"
-                             Foreground="{StaticResource LightGrey}"
-                             FontSize="22"
-                             Style="{StaticResource MainMenuNavigationButton}"
-                             Command="{Binding NotesViewModelCommand}"/>
-                
+                <controls:NavigationButtonWithIcon Content="Notes"
+                                                   Height="60"
+                                                   Icon="&#xE762;"
+                                                   IconFontFamily="Segoe MDL2 Assets"
+                                                   Foreground="{StaticResource LightGrey}"
+                                                   FontSize="22"
+                                                   IsChecked="{Binding NotesNavButtonChecked, 
+                                                   UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                   Command="{Binding NotesViewModelCommand}" />
+
             </StackPanel>
 
             <!-- currently selected menu content -->

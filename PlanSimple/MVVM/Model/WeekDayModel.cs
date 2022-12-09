@@ -1,8 +1,12 @@
-﻿namespace PlanSimple.Database.Model
+﻿using PlanSimple.HelperClasses;
+using System;
+
+namespace PlanSimple.Database.Model
 {
     public class WeekDayModel
     {
-        public string? DayName { get; set; }
-        public int DayNumber { get; set; }
+        public string? DayName { get => CalendarHelper.WeekDaysShortNames[Date.DayOfWeek.ToString()]; }
+        public int DayNumber { get => Date.Day; }
+        public DateOnly Date { get; set; }
     }
 }

@@ -21,12 +21,18 @@ public class MainWindowViewModel : BaseViewModel
 			CurrentView = new NotesViewModel();
 			if ((CurrentView as NotesViewModel)!.NoteEditViewCommand.CanExecute(o))
 				(CurrentView as NotesViewModel)!.NoteEditViewCommand.Execute(o);
+			
+			NotesNavButtonChecked = true;
+			OnPropertyChanged(nameof(NotesNavButtonChecked));
 		});
 	}
 
 	public RelayCommand CalendarViewCommand { get; }
 	public RelayCommand NotesViewModelCommand { get; }
 	public RelayCommand NoteEditViewCommand { get; }
+
+	public bool CalendarNavButtonChecked { get; set; } = true;
+	public bool NotesNavButtonChecked { get; set; }
 
 	public BaseViewModel? CurrentView
 	{

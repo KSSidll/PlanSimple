@@ -64,18 +64,22 @@
                                               Foreground="{StaticResource LightGrey}"
                                               HoverForeground="{StaticResource LightGrey}"
                                               BorderThickness="0"
-                                              Content="[]" 
+                                              Content="&#xEB7E;"
+                                              FontSize="17"
+                                              FontFamily="Segoe MDL2 Assets" 
                                               Command="{Binding DataContext.NoteEditViewCommand,
                                               RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"
                                               CommandParameter="{Binding}" />
                         
                         <controls:HoverButton Grid.Column="6" 
                                               Background="{StaticResource DarkGrey}"
-                                              HoverBackground="{StaticResource VeryDarkGrey}"
+                                              HoverBackground="{StaticResource Crimson-35}"
                                               Foreground="{StaticResource LightGrey}"
                                               HoverForeground="{StaticResource LightGrey}"
                                               BorderThickness="0"
-                                              Content="X" 
+                                              Content="&#xE106;" 
+                                              FontSize="17"
+                                              FontFamily="Segoe MDL2 Assets" 
                                               Command="{Binding DataContext.DeleteNote,
                                               RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                               CommandParameter="{Binding}" />
@@ -93,16 +97,19 @@
         </ListView>
         
         <controls:HoverButton Grid.Row="1"
+                              CornerRadius="40"
                               Background="{StaticResource DarkGrey}"
                               HoverBackground="{StaticResource VeryDarkGrey}"
                               Foreground="{StaticResource LightGrey}"
                               HoverForeground="{StaticResource LightGrey}"
-                              Width="60"
-                              Height="60"
+                              Width="61"
+                              Height="61"
                               HorizontalAlignment="Right"
                               VerticalAlignment="Bottom"
                               BorderThickness="0"
-                              Content="Add"
+                              Content="&#xE948;"
+                              FontSize="25"
+                              FontFamily="Segoe MDL2 Assets"
                               Command="{Binding DataContext.NoteEditViewCommand,
                               RelativeSource={RelativeSource AncestorType={x:Type view:NotesView}}}"/>
         <Grid Grid.Row="0">

@@ -29,4 +29,12 @@ public partial class HoverButton : Button
 	}
 	public static readonly DependencyProperty HoverForegroundProperty = DependencyProperty.Register(
 		nameof(HoverForeground), typeof(Brush), typeof(HoverButton), new PropertyMetadata(DefaultHoverForegroundValue));
+	
+	public int CornerRadius
+	{
+		get => (int)GetValue(CornerRadiusProperty);
+		set => SetValue(CornerRadiusProperty, value);
+	}
+	public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.Register(
+		nameof(CornerRadius), typeof(int), typeof(HoverButton), new PropertyMetadata(defaultValue:0));
 }
