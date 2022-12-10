@@ -56,7 +56,8 @@
                                Content="{Binding Description}" />
                         
                         <Label Grid.Column="4"
-                               Content="{Binding Date}" />
+                               Content="{Binding Date}"
+                               ContentStringFormat="dd.MM.yyyy"/>
                         
                         <controls:HoverButton Grid.Column="5"
                                               Background="{DynamicResource Background-3}"
