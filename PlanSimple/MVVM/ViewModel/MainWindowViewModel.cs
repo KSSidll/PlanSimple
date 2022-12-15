@@ -1,5 +1,4 @@
 ﻿using PlanSimple.Core;
-using PlanSimple.Database.Model;
 
 namespace PlanSimple.MVVM.ViewModel;
 
@@ -14,23 +13,10 @@ public class MainWindowViewModel : BaseViewModel
         CalendarViewCommand = new RelayCommand(_ => { CurrentView = new CalendarViewModel(); });
 		NotesViewModelCommand = new RelayCommand(_ => { CurrentView = new NotesViewModel(); });
 		OptionsViewCommand = new RelayCommand(_ => { CurrentView = new OptionsViewModel(); });
-		
-		NoteEditViewCommand = new RelayCommand(o =>
-		{
-			if (o is not ToDoNote) return;
-			
-			CurrentView = new NotesViewModel();
-			if ((CurrentView as NotesViewModel)!.NoteEditViewCommand.CanExecute(o))
-				(CurrentView as NotesViewModel)!.NoteEditViewCommand.Execute(o);
-			
-			NotesNavButtonChecked = true;
-			OnPropertyChanged(nameof(NotesNavButtonChecked));
-		});
 	}
 
 	public RelayCommand CalendarViewCommand { get; }
 	public RelayCommand NotesViewModelCommand { get; }
-	public RelayCommand NoteEditViewCommand { get; }
 	public RelayCommand OptionsViewCommand { get; }
 
 	public bool CalendarNavButtonChecked { get; set; } = true;

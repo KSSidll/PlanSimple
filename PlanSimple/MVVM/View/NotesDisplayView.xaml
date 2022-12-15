@@ -100,6 +100,7 @@
                               HoverForeground="{DynamicResource Foreground}"
                               Width="61"
                               Height="61"
+                              Margin="0 0 10 10 "
                               HorizontalAlignment="Right"
                               VerticalAlignment="Bottom"
                               BorderThickness="0"
