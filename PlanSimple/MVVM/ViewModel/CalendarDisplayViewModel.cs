@@ -13,14 +13,28 @@ namespace PlanSimple.MVVM.ViewModel
 
     public class CalendarDisplayViewModel : BaseViewModel
     {       
+        
         public BindingList<WeekDayModel> Week { get; set; } = new();
         public string? CurrentMonth { get => CalendarHelper.GetMonthName(Week.FirstOrDefault()?.Date); }
         public BindingList<ToDoListDisplayModel> Days { get; set; } = new();
         public RelayCommand? PreviousWeek { get; }
         public RelayCommand? NextWeek { get; }
+        public bool IsInfoVisible { get => String.IsNullOrWhiteSpace(InfoMessage) == false; }
+
+        public string? InfoMessage
+        {
+            get => _infoMessage;
+            set
+            {
+                _infoMessage = value;
+                OnPropertyChanged(nameof(InfoMessage));
+                OnPropertyChanged(nameof(IsInfoVisible));
+            }
+        }
 
         private static readonly ToDoNoteContext ToDoNoteContext = new();
         private DbSet<ToDoNote> ToDoNotes => ToDoNoteContext.ToDoNotes;
+        private string? _infoMessage = null;
         
         public CalendarDisplayViewModel()
         {
@@ -84,8 +98,11 @@ namespace PlanSimple.MVVM.ViewModel
 
                 Days.Add(model);
             }
+
+            InfoMessage = (groups.Count() == 0) ? "You have no notes for this week!" : null;
+
         }
-    
+
         private void SetTestData()
         {
 

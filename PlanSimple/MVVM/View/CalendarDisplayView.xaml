@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -77,9 +78,22 @@
                                   Command="{Binding NextWeek}"/>
         </Grid>
 
+        <!-- Info Message -->
+        <TextBlock Grid.Row="2"
+                   FontSize="24"
+                   Background="{DynamicResource Background}" 
+                   Foreground="{DynamicResource Foreground}"
+                   Text="{Binding InfoMessage}"
+                   TextWrapping="Wrap"
+                   Visibility="{Binding IsInfoVisible, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"   
+                   Margin="10 30" 
+                   FontStyle="Italic"
+                   />
 
         <!-- To Do List -->
-        <controls:HoverListBox Grid.Row="2" 
+        <controls:HoverListBox Grid.Row="3" 
                                HoverBackground="{DynamicResource Background-3}"
                                ItemsSource="{Binding Days}"
                                FontSize="24" 
