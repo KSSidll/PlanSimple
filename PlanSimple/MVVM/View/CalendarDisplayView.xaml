@@ -42,7 +42,10 @@
                     FontSize="18"
                     Background="{x:Null}" 
                     Foreground="{DynamicResource Foreground}"
-                    Text="{Binding CurrentMonth}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    Text="{Binding CurrentMonth}" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    FontWeight="Bold"/>
                 <controls:HoverListBox
                                    HoverBackground="{DynamicResource Background-10}"
                                    ItemsSource="{Binding Week}" 
@@ -89,8 +92,7 @@
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Center"   
                    Margin="10 30" 
-                   FontStyle="Italic"
-                   />
+                   FontStyle="Italic"/>
 
         <!-- To Do List -->
         <controls:HoverListBox Grid.Row="3" 
