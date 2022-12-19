@@ -15,8 +15,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="32.8"/>
-            <RowDefinition Height="27.2"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -36,28 +36,36 @@
                                   BorderThickness="0"
                                   Content="◀"
                                   Command="{Binding PreviousWeek}"/>
-            <controls:HoverListBox Grid.Column="1" 
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                <TextBlock
+                    FontSize="18"
+                    Background="{x:Null}" 
+                    Foreground="{DynamicResource Foreground}"
+                    Text="{Binding CurrentMonth}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                <controls:HoverListBox
                                    HoverBackground="{DynamicResource Background-10}"
                                    ItemsSource="{Binding Week}" 
                                    HorizontalContentAlignment="Stretch" 
                                    FontSize="18" 
                                    Background="{x:Null}" 
                                    Foreground="{DynamicResource Foreground}" 
-                                   BorderBrush="{x:Null}">                
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="7" />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical" >
-                            <TextBlock Text="{Binding DayName}" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{Binding DayNumber}" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </controls:HoverListBox>
+                                   BorderBrush="{x:Null}"
+                                   Margin="5">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="7" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" >
+                                <TextBlock Text="{Binding DayName}" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding DayNumber}" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </controls:HoverListBox>
+            </StackPanel>
             <controls:HoverButton Grid.Column="2" 
                                   Padding="15 0" 
                                   Background="{DynamicResource Background-3}" 

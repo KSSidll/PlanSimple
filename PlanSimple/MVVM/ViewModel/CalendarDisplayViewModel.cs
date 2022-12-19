@@ -14,8 +14,8 @@ namespace PlanSimple.MVVM.ViewModel
     public class CalendarDisplayViewModel : BaseViewModel
     {       
         public BindingList<WeekDayModel> Week { get; set; } = new();
+        public string? CurrentMonth { get => CalendarHelper.GetMonthName(Week.FirstOrDefault()?.Date); }
         public BindingList<ToDoListDisplayModel> Days { get; set; } = new();
-
         public RelayCommand? PreviousWeek { get; }
         public RelayCommand? NextWeek { get; }
 
@@ -30,23 +30,25 @@ namespace PlanSimple.MVVM.ViewModel
 
             PreviousWeek = new RelayCommand(_ =>
             {
-                for (int i = 0; i < Week.Count; i++)
-                {
-                    Week[i].Date = Week[i].Date.AddDays(-7);
-                }
-                Week.ResetBindings();
-                GetNotesForWeek();
+                OffSetWeek(-7);
             });
 
             NextWeek = new RelayCommand(_ =>
             {
-                for (int i = 0; i < Week.Count; i++)
-                {
-                    Week[i].Date = Week[i].Date.AddDays(7);
-                }
-                Week.ResetBindings();
-                GetNotesForWeek();
+                OffSetWeek(7);
             });
+
+        }
+
+        private void OffSetWeek(int days)
+        {
+            for (int i = 0; i < Week.Count; i++)
+            {
+                Week[i].Date = Week[i].Date.AddDays(days);
+            }
+            Week.ResetBindings();
+            GetNotesForWeek();
+            OnPropertyChanged(nameof(CurrentMonth));
         }
 
         private void SetWeekDays()
@@ -57,12 +59,10 @@ namespace PlanSimple.MVVM.ViewModel
                 .Select(x => new WeekDayModel { Date = DateOnly.FromDateTime(x) })
                 .ToList();
 
-            Week = new BindingList<WeekDayModel>();
-
-            foreach (var item in week)
-            {
-                Week.Add(item);
-            }
+            Week = new BindingList<WeekDayModel>(CalendarHelper.GetWeek(currentDay)
+                .Select(x => new WeekDayModel { Date = DateOnly.FromDateTime(x) })
+                .ToList()
+            );
         }
 
         private void GetNotesForWeek()
