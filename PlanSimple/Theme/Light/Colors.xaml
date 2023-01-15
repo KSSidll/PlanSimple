@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- dash `-` after Key name means approximately how much darker it is compared to origical without dash -->
+    <!-- this isn't meant to be accurate, it's only meant to convey which color is lighter/darker compared to some other -->
+    <!-- Crimson-12 means that this is approximately 12% darker than Crimson -->
+    <!-- Background2 means that this is approximately 2% lighter than Background -->
+    <!-- if a color is lightest/darkest possible yet has lighter/darker version, it's because of compatibility -->
+    
+    <!-- content background -->
+    <Brush x:Key="Background">#ffffff</Brush>
+    
+    <!-- lighter versions of content background -->
+    <Brush x:Key="Background2">#ffffff</Brush>
+    
+    <!-- darker versions of content background -->
+    <Brush x:Key="Background-3">#f8f8f8</Brush>
+    <Brush x:Key="Background-5">#f2f2f2</Brush>
+    <Brush x:Key="Background-10">#e6e6e6</Brush>
+    
+    <!-- foreground -->
+    <Brush x:Key="Foreground">#060607</Brush>
+
+    <!-- placeholder text foreground color -->
+    <Brush x:Key="PlaceholderForeground">#333333</Brush>
+    
+</ResourceDictionary>

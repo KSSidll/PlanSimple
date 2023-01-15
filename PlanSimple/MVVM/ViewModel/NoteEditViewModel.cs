@@ -7,12 +7,12 @@ namespace PlanSimple.MVVM.ViewModel;
 
 public class NoteEditViewModel : BaseViewModel
 {
-	private static readonly ToDoNoteContext ToDoNoteContext = new();
+	private protected static readonly ToDoNoteContext ToDoNoteContext = new();
 	
 	// Changing views calls parameterless constructor, so if this isn't static, changing views will reinitialise it,
 	// because of that we need to call constructor with new ToDoNote() if we want to erase saved data
-	private static ToDoNote _toDoNote = new();
-	private static DateTime? _date;
+	private protected static ToDoNote toDoNote = new();
+	private protected static DateTime? date;
 	
 	public NoteEditViewModel()
 	{
@@ -50,22 +50,22 @@ public class NoteEditViewModel : BaseViewModel
 
 	public ToDoNote ToDoNote
 	{
-		get => _toDoNote;
+		get => toDoNote;
 		init
 		{
-			if (Equals(value, _toDoNote)) return;
-			_toDoNote = value;
+			if (Equals(value, toDoNote)) return;
+			toDoNote = value;
 			OnPropertyChanged();
 		}
 	}
 
 	public DateTime? Date
 	{
-		get => _date;
+		get => date;
 		set
 		{
-			if (Nullable.Equals(value, _date)) return;
-			_date = value;
+			if (Nullable.Equals(value, date)) return;
+			date = value;
 			OnPropertyChanged();
 		}
 	}

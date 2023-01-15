@@ -5,37 +5,57 @@
              xmlns:view="clr-namespace:PlanSimple.MVVM.View"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         <ResourceDictionary>
-             <ResourceDictionary.MergedDictionaries>
-                 <ResourceDictionary Source="Theme/Colors.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Colors -->
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="/Theme/Dark/Colors.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
 
-                 <ResourceDictionary Source="Theme/MainMenuNavigationButtonTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/TextboxWithPlaceholderTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/DatePickerWithPlaceholderTheme.xaml"/>
-                 
-                 <ResourceDictionary Source="Theme/ListViewTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/ListBoxTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/LabelTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/CheckBoxTheme.xaml"/>
-                 <ResourceDictionary Source="Theme/ComboBoxTheme.xaml"/>
-             </ResourceDictionary.MergedDictionaries>
-             
-             <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
-                 <view:NotesView/>
-             </DataTemplate>     
-             
-             <DataTemplate DataType="{x:Type viewModel:CalendarViewModel}">
-                 <view:CalendarView/>
-             </DataTemplate>
-             
-             <DataTemplate DataType="{x:Type viewModel:NotesDisplayViewModel}">
-                 <view:NotesDisplayView/>
-             </DataTemplate>
-             
-             <DataTemplate DataType="{x:Type viewModel:NoteEditViewModel}">
-                 <view:NoteEditView/>
-             </DataTemplate>
-             
-         </ResourceDictionary>
+                <ResourceDictionary Source="/Theme/UniversalColors.xaml"/>
+
+                <!-- specific control themes -->
+                <ResourceDictionary Source="Theme/MainMenuNavigationButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextboxWithPlaceholderTheme.xaml"/>
+                <ResourceDictionary Source="Theme/DatePickerWithPlaceholderTheme.xaml"/>
+
+                <!-- base control themes -->
+                <ResourceDictionary Source="Theme/ListViewTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ListBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/LabelTheme.xaml"/>
+                <ResourceDictionary Source="Theme/CheckBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ComboBoxTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <DataTemplate DataType="{x:Type viewModel:CalendarViewModel}">
+                <view:CalendarView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:CalendarDisplayViewModel}">
+                <view:CalendarDisplayView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:CalendarNoteEditViewModel}">
+                <view:CalendarNoteEditView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:NotesViewModel}">
+                <view:NotesView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:NotesDisplayViewModel}">
+                <view:NotesDisplayView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:NoteEditViewModel}">
+                <view:NoteEditView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:OptionsViewModel}">
+                <view:OptionsView/>
+            </DataTemplate>
+
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

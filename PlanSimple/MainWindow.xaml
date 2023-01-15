@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         Title="Plan Simple" Width="800" Height="600"
-        Background="{StaticResource Grey}">
+        Background="{DynamicResource Background}">
     
     <!-- declare top 32 pixels as title bar -->
     <WindowChrome.WindowChrome>
@@ -29,7 +29,7 @@
 
         <!-- title bar -->
         <Grid Grid.Row="0"
-              Background="{StaticResource VeryDarkGrey}">
+              Background="{DynamicResource Background-10}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="50"/>
@@ -45,10 +45,10 @@
                                   FontFamily="Segoe MDL2 Assets" 
                                   FontSize="10" 
                                   Padding="15,15,15,5" 
-                                  HoverBackground="{StaticResource TitleBarButtonHoverColor}"
+                                  HoverBackground="{DynamicResource Background2}"
                                   Background="Transparent"
-                                  HoverForeground="{StaticResource LightGrey}"
-                                  Foreground="{StaticResource LightGrey}"
+                                  HoverForeground="{DynamicResource Foreground}"
+                                  Foreground="{DynamicResource Foreground}"
                                   BorderThickness="0" />
             
             <!-- maximise toggle button -->
@@ -58,10 +58,10 @@
                                   FontFamily="Segoe MDL2 Assets"
                                   FontSize="10"
                                   Padding="15,10"
-                                  HoverBackground="{StaticResource TitleBarButtonHoverColor}"
+                                  HoverBackground="{DynamicResource Background2}"
                                   Background="Transparent"
-                                  HoverForeground="{StaticResource LightGrey}"
-                                  Foreground="{StaticResource LightGrey}"
+                                  HoverForeground="{DynamicResource Foreground}"
+                                  Foreground="{DynamicResource Foreground}"
                                   BorderBrush="{x:Null}"
                                   BorderThickness="0">
                 <i:Interaction.Triggers>
@@ -79,13 +79,13 @@
                                   WindowChrome.IsHitTestVisibleInChrome="True"
                                   Click="Close_Click" 
                                   Content="&#xE106;" 
-                                  HoverBackground="{StaticResource TitleBarCloseButtonHoverColor}"
+                                  HoverBackground="{DynamicResource TitleBarCloseButtonHoverBackground}"
                                   HoverForeground="White"
                                   FontFamily="Segoe MDL2 Assets" 
                                   FontSize="10" 
                                   Padding="15,10" 
                                   Background="Transparent" 
-                                  Foreground="{StaticResource LightGrey}"
+                                  Foreground="{DynamicResource Foreground}"
                                   BorderThickness="0"/>
 
         </Grid>
@@ -99,30 +99,46 @@
             </Grid.ColumnDefinitions>
 
             <!-- navigation menu -->
-            <StackPanel
-                Grid.Column="0"
-                Background="{StaticResource DarkGrey}">
+            <Grid Grid.Column="0"
+                Background="{DynamicResource Background-3}">
                 
-                <controls:NavigationButtonWithIcon Content="Calendar"
-                                                   Height="60"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                
+                <controls:NavigationButtonWithIcon Grid.Row="0" 
+                                                   Content="Calendar"
                                                    Icon="&#xE787;"
                                                    IconFontFamily="Segoe MDL2 Assets"
-                                                   Foreground="{StaticResource LightGrey}"
+                                                   Foreground="{DynamicResource Foreground}"
                                                    FontSize="22"
                                                    IsChecked="{Binding CalendarNavButtonChecked, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                    Command="{Binding CalendarViewCommand}"/>
 
-                <controls:NavigationButtonWithIcon Content="Notes"
-                                                   Height="60"
+                <controls:NavigationButtonWithIcon Grid.Row="1"
+                                                   Content="Notes"
                                                    Icon="&#xE762;"
                                                    IconFontFamily="Segoe MDL2 Assets"
-                                                   Foreground="{StaticResource LightGrey}"
+                                                   Foreground="{DynamicResource Foreground}"
                                                    FontSize="22"
                                                    IsChecked="{Binding NotesNavButtonChecked, 
                                                    UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                    Command="{Binding NotesViewModelCommand}" />
+                
+                <controls:NavigationButtonWithIcon Grid.Row="3" 
+                                                   Content="Options"
+                                                   Icon="&#xE9F5;"
+                                                   IconFontFamily="Segoe MDL2 Assets"
+                                                   Foreground="{DynamicResource Foreground}"
+                                                   FontSize="22"
+                                                   IsChecked="{Binding NotesNavButtonChecked, 
+                                                   UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                   Command="{Binding OptionsViewCommand}" />
 
-            </StackPanel>
+            </Grid>
 
             <!-- currently selected menu content -->
             <ContentControl Grid.Column="1"

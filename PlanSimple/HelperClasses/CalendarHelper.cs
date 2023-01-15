@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlanSimple.MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,12 @@ namespace PlanSimple.HelperClasses
             }
 
             return week;
+        }
+
+        public static string? GetMonthName(DateOnly? date)
+        {
+            var x = Enum.GetName(typeof(Month), date?.Month);
+            return x;
         }
     }
 }

@@ -15,12 +15,12 @@
                     Width="25"
                     Height="25"
                     BorderThickness="2"
-                    Background="{StaticResource VeryDarkGrey}">
+                    Background="{DynamicResource Background-10}">
               
               <ContentControl Visibility="Hidden"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Foreground="{StaticResource LightGrey}"
+                              Foreground="{DynamicResource Foreground}"
                               x:Name="CheckMark"
                               Content="&#xE73E;" 
                               FontFamily="Segoe MDL2 Assets" />
