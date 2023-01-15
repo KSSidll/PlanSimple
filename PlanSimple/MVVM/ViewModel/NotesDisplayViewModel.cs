@@ -9,7 +9,7 @@ namespace PlanSimple.MVVM.ViewModel;
 
 public class NotesDisplayViewModel : BaseViewModel
 {
-	private static readonly ToDoNoteContext ToDoNoteContext = new();
+	private readonly ToDoNoteContext _toDoNoteContext = new();
 	private static int _itemUpdateSkip;
 	public NotesDisplayViewModel()
 	{
@@ -17,8 +17,8 @@ public class NotesDisplayViewModel : BaseViewModel
 		UpdateNote = new RelayCommand(o =>
 		{
 			if (o is not ToDoNote toDoNote) return;
-			ToDoNoteContext.ToDoNotes.Update(toDoNote);
-			ToDoNoteContext.SaveChanges();
+			_toDoNoteContext.ToDoNotes.Update(toDoNote);
+			_toDoNoteContext.SaveChanges();
 			
 			// Refresh displayed items when 1 seconds passes after last update
 			++_itemUpdateSkip;
@@ -36,8 +36,8 @@ public class NotesDisplayViewModel : BaseViewModel
 		DeleteNote = new RelayCommand(o =>
 		{
 			if (o is not ToDoNote toDoNote) return;
-			ToDoNoteContext.ToDoNotes.Remove(toDoNote);
-			ToDoNoteContext.SaveChanges();
+			_toDoNoteContext.ToDoNotes.Remove(toDoNote);
+			_toDoNoteContext.SaveChanges();
 			
 			ToDoNotes.Remove(toDoNote);
 		});
@@ -50,8 +50,8 @@ public class NotesDisplayViewModel : BaseViewModel
 
 	private void RefreshCollection()
 	{
-		ToDoNotes = DisplayCompleted ? new ObservableCollection<ToDoNote>(ToDoNoteContext.ToDoNotes) : 
-			new ObservableCollection<ToDoNote>(ToDoNoteContext.ToDoNotes.Where(x => x.Completed == false));
+		ToDoNotes = DisplayCompleted ? new ObservableCollection<ToDoNote>(_toDoNoteContext.ToDoNotes) : 
+			new ObservableCollection<ToDoNote>(_toDoNoteContext.ToDoNotes.Where(x => x.Completed == false));
 		OnPropertyChanged(nameof(ToDoNotes));
 	}
 

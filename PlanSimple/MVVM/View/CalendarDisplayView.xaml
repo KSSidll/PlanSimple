@@ -126,10 +126,15 @@
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
                                         
-                                        <CheckBox Grid.Column="0"
+                                        <CheckBox Grid.Column="0" 
                                                   VerticalAlignment="Center"
                                                   Margin="5 0 10 0" 
-                                                  Foreground="{DynamicResource Foreground}"/>
+                                                  Foreground="{DynamicResource Foreground}"
+                                                  IsChecked="{Binding Completed}" 
+                                                  Command="{Binding DataContext.UpdateNote, 
+                                                  RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                  CommandParameter="{Binding}" />
+                                        
                                         <StackPanel Grid.Column="1" Orientation="Vertical">
                                             <Label Content="{Binding Title}" 
                                                    HorizontalContentAlignment="Left"

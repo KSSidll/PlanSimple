@@ -19,6 +19,8 @@ namespace PlanSimple.MVVM.ViewModel
         public BindingList<ToDoListDisplayModel> Days { get; set; } = new();
         public RelayCommand? PreviousWeek { get; }
         public RelayCommand? NextWeek { get; }
+        
+        public RelayCommand? UpdateNote { get; }
         public bool IsInfoVisible { get => String.IsNullOrWhiteSpace(InfoMessage) == false; }
 
         public string? InfoMessage
@@ -32,8 +34,8 @@ namespace PlanSimple.MVVM.ViewModel
             }
         }
 
-        private static readonly ToDoNoteContext ToDoNoteContext = new();
-        private DbSet<ToDoNote> ToDoNotes => ToDoNoteContext.ToDoNotes;
+        private readonly ToDoNoteContext _toDoNoteContext = new();
+        private DbSet<ToDoNote> ToDoNotes => _toDoNoteContext.ToDoNotes;
         private string? _infoMessage = null;
         
         public CalendarDisplayViewModel()
@@ -50,6 +52,13 @@ namespace PlanSimple.MVVM.ViewModel
             NextWeek = new RelayCommand(_ =>
             {
                 OffSetWeek(7);
+            });
+            
+            UpdateNote = new RelayCommand(o =>
+            {
+                if (o is not ToDoNote toDoNote) return;
+                _toDoNoteContext.ToDoNotes.Update(toDoNote);
+                _toDoNoteContext.SaveChanges();
             });
 
         }
@@ -142,7 +151,7 @@ namespace PlanSimple.MVVM.ViewModel
                     Priority = Priority.High
                 });
                 
-                ToDoNoteContext.SaveChanges();
+                _toDoNoteContext.SaveChanges();
             }         
 
         }
