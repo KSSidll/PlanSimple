@@ -103,10 +103,10 @@
                 Background="{DynamicResource Background-3}">
                 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="82"/>
+                    <RowDefinition Height="82"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="82"/>
                 </Grid.RowDefinitions>
                 
                 <controls:NavigationButtonWithIcon Grid.Row="0" 
