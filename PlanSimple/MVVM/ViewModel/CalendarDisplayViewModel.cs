@@ -12,8 +12,8 @@ namespace PlanSimple.MVVM.ViewModel
 {
 
     public class CalendarDisplayViewModel : BaseViewModel
-    {       
-        
+    {
+        public static DateTime DisplayedWeek = DateTime.Now;
         public BindingList<WeekDayModel> Week { get; set; } = new();
         public string? CurrentMonth { get => CalendarHelper.GetMonthName(Week.FirstOrDefault()?.Date); }
         public BindingList<ToDoListDisplayModel> Days { get; set; } = new();
@@ -69,6 +69,8 @@ namespace PlanSimple.MVVM.ViewModel
             {
                 Week[i].Date = Week[i].Date.AddDays(days);
             }
+
+            DisplayedWeek = DisplayedWeek.AddDays(days);
             Week.ResetBindings();
             GetNotesForWeek();
             OnPropertyChanged(nameof(CurrentMonth));
@@ -76,7 +78,7 @@ namespace PlanSimple.MVVM.ViewModel
 
         private void SetWeekDays()
         {
-            var currentDay = DateTime.Now;
+            var currentDay = DisplayedWeek;
 
             var week = CalendarHelper.GetWeek(currentDay)
                 .Select(x => new WeekDayModel { Date = DateOnly.FromDateTime(x) })
