@@ -16,10 +16,11 @@
         
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="15"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         
-        <ListView Grid.Row="1"
+        <ListView Grid.Row="2"
                   ItemsSource="{Binding ToDoNotes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -92,7 +93,7 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <controls:HoverButton Grid.Row="1"
+        <controls:HoverButton Grid.Row="2"
                               CornerRadius="40"
                               Background="{DynamicResource Background-3}"
                               HoverBackground="{DynamicResource Background-10}"
