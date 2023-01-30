@@ -19,7 +19,7 @@ namespace PlanSimple.MVVM.ViewModel
         public BindingList<ToDoListDisplayModel> Days { get; set; } = new();
         public RelayCommand? PreviousWeek { get; }
         public RelayCommand? NextWeek { get; }
-        
+        public RelayCommand? ResetWeekToToday { get; }
         public RelayCommand? UpdateNote { get; }
         public bool IsInfoVisible { get => String.IsNullOrWhiteSpace(InfoMessage) == false; }
 
@@ -52,6 +52,13 @@ namespace PlanSimple.MVVM.ViewModel
             NextWeek = new RelayCommand(_ =>
             {
                 OffSetWeek(7);
+            });
+            
+            ResetWeekToToday = new RelayCommand(_ =>
+            {
+                var weekDiff = DateTime.Now.Subtract(DisplayedWeek).Days;
+                DisplayedWeek = DateTime.Now;
+                OffSetWeek(weekDiff);
             });
             
             UpdateNote = new RelayCommand(o =>
