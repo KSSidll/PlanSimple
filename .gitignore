@@ -8,3 +8,5 @@
 /PlanSimpleTest/obj
 /.vs
 *.db
+
+*.DotSettings.user
